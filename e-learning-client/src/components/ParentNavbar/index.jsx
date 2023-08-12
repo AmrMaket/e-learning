@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './styles.css'
+import '../../base.css';
 
 const ParentNavbar = () => {
 
@@ -13,14 +14,20 @@ const ParentNavbar = () => {
     
     return (
 
-        <nav className="parent-navbar">
-            <h1>{userType}</h1>
-            <div className="links">
-                <Link to="/">{feature1}</Link>
-                <Link to="/communicationWithTeachers">{feature2}</Link>
-                <Link to="/attendanceAndSchedule">{feature3}</Link>
-                <Link to="/notificationsAndReminders">{feature4}</Link>
-                <Link to="/parentTeacherConference">{feature5}</Link>
+        <nav className="parent-navbar flex justify-between justify-center align-center padding-s blue-bg">
+            <div className="parent-navbar-title white-text flex justify-center align-center padding-s">
+                <div className="image-container">
+                    <img src={'logo-elearn.png'} alt="logo" />
+                </div>
+                <h1>{userType}</h1>
+            </div>
+            
+            <div className="parent-links flex">
+                <Link className='link-button padding-s white-text' to="/">{feature1}</Link>
+                <Link className='link-button padding-s white-text' to="/communicationWithTeachers">{feature2}</Link>
+                <Link className='link-button padding-s white-text' to="/attendanceAndSchedule">{feature3}</Link>
+                <Link className='link-button padding-s white-text' to="/notificationsAndReminders">{feature4}</Link>
+                <Link className='link-button padding-s white-text' to="/parentTeacherConference">{feature5}</Link>
             </div>
         </nav>
     );

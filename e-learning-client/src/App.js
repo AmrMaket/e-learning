@@ -1,10 +1,10 @@
 import './App.css';
 import ParentNavbar from './components/ParentNavbar';
-import ProgressMonitoring from './pages/ProgressMonitoring';
-import ParentTeacherConference from './pages/ParentTeacherConference';
-import CommunicationWithTeachers from './pages/CommunicationWithTeachers';
-import AttendanceAndSchedule from './pages/AttendanceAndSchedule';
-import NotificationsAndReminders from './pages/NotificationsAndReminders';
+import ProgressMonitoring from './pages/parent/ProgressMonitoring';
+import ParentTeacherConference from './pages/parent/ParentTeacherConference';
+import CommunicationWithTeachers from './pages/parent/CommunicationWithTeachers';
+import AttendanceAndSchedule from './pages/parent/AttendanceAndSchedule';
+import NotificationsAndReminders from './pages/parent/NotificationsAndReminders';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
