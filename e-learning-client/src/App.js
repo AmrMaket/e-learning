@@ -1,15 +1,12 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ButtonAdd from './components/ButtonAdd';
+import CourseCreation from '../src/pages/CourseCreation/index';
 
 function App() {
   return (
     <BrowserRouter>
         <Routes>
-          <Route path="/" element={<ButtonAdd />} />
-          {/* <Route path="/landing" element={<Landing />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/singleView" element={<SingleView />} /> */}
+          <Route path="/" element={<CourseCreation />} />
         </Routes>
       </BrowserRouter>
   );
