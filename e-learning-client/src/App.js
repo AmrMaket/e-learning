@@ -1,10 +1,9 @@
 import './App.css';
+import ParentChat from './pages/ParentChat'
 
 function App() {
   return (
-    <div>
-      Hello
-    </div>
+    <ParentChat/>
   );
 }
 
