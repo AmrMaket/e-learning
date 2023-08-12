@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import './styles.css'
 import '../../base.css';
 
-const ParentNavbar = () => {
+const StudentNavbar = () => {
 
-    const userType = "Parent";
+    const userType = "Student";
 
     const feature1 = "Progress Monitoring"
     const feature2 = "Communication with Teachers"
@@ -24,13 +24,13 @@ const ParentNavbar = () => {
             
             <div className="links flex scroll">
                 <Link className='link-button padding-s white-text' to="/">{feature1}</Link>
-                <Link className='link-button padding-s white-text' to="/communicationWithTeachers">{feature2}</Link>
-                <Link className='link-button padding-s white-text' to="/attendanceAndSchedule">{feature3}</Link>
-                <Link className='link-button padding-s white-text' to="/notificationsAndReminders">{feature4}</Link>
-                <Link className='link-button padding-s white-text' to="/parentTeacherConference">{feature5}</Link>
+                <Link className='link-button padding-s white-text' to="/progressTracking">{feature2}</Link>
+                <Link className='link-button padding-s white-text' to="/interactiveLearning">{feature3}</Link>
+                <Link className='link-button padding-s white-text' to="/studySupport">{feature4}</Link>
+                <Link className='link-button padding-s white-text' to="/offlineLearning">{feature5}</Link>
             </div>
         </nav>
     );
 }
  
-export default ParentNavbar;
+export default StudentNavbar;
