@@ -6,11 +6,11 @@ const StudentNavbar = () => {
 
     const userType = "Student";
 
-    const feature1 = "Progress Monitoring"
-    const feature2 = "Communication with Teachers"
-    const feature3 = "Attendance and Schedule"
-    const feature4 = "Notifications and Reminders"
-    const feature5 = "Parent-Teacher Conference Scheduling"
+    const feature1 = "Course Enrollment"
+    const feature2 = "Progress Tracking"
+    const feature3 = "Interactive Learning"
+    const feature4 = "Study Support"
+    const feature5 = "Offline Learning"
     
     return (
 
