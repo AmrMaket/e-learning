@@ -1,9 +1,9 @@
 import './App.css';
-import ParentChat from './pages/ParentChat'
+import Attendances from './pages/Attendances'
 
 function App() {
   return (
-    <ParentChat/>
+    <Attendances/>
   );
 }
 
