@@ -16,10 +16,10 @@ const Navbar = () => {
             <h1>{userType}</h1>
             <div className="links">
                 <a href="/">{feature1}</a>
-                <a href="/">{feature2}</a>
-                <a href="/">{feature3}</a>
-                <a href="/">{feature4}</a>
-                <a href="/">{feature5}</a>
+                <a href="/communicationWithTeachers">{feature2}</a>
+                <a href="/attendanceAndSchedule">{feature3}</a>
+                <a href="/notificationsAndReminders">{feature4}</a>
+                <a href="/parentTeacherConference">{feature5}</a>
             </div>
         </nav>
     );
