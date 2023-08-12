@@ -27,7 +27,7 @@ import StudySupport from './pages/student/StudySupport';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
-	const state = 2;
+	const state = 3;
 	if (state === 0) {
 		//admin
 		//return(...admin related)
