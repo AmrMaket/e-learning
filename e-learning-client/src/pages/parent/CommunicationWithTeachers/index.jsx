@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import SingleChat from "../../components/ParentSingleChat";
+import SingleChat from "../../../components/ParentSingleChat";
 
 function ParentChat() {
   let dummy_data = [
