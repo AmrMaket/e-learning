@@ -17,7 +17,7 @@ const Discussion = (props) => {
                     </div>
                 ))}
                 <button>
-                    Start a discussion!
+                    Start a blog!
                 </button>
             </div>
         </div>
