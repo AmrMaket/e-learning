@@ -71,7 +71,7 @@ function ProgressMonitoring() {
     //api badde baddel l dummy b data: 1)student name 2)course info
     <div className="progress-monitoring-page">
       <div className="course-cards">
-        {studentData.map((student) => (
+        {dummy_data.map((student) => (
           <div key={student.id} className="student-card">
             <h2>{student.studentName}</h2>
             <div className="course-list">
