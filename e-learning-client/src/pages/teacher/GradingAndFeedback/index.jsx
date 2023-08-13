@@ -17,6 +17,10 @@ const AddGrades = ({ students, assignments }) => {
     console.log('Grades:', grades); 
   };
 
+  if (!students || !assignments) {
+    return null;
+  }
+
   return (
     <div>
       <h2>Add Grades</h2>

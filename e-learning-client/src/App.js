@@ -2,11 +2,11 @@ import './App.css';
 
 //Teacher-related imports
 import TeacherNavbar from './components/TeacherNavbar';
-import AttendanceTracking from './pages/teacher/AttendanceTracking';
-import CollaborationTools from './pages/teacher/CollaborationTools';
-import Communication from './pages/teacher/Communication';
-import CourseCreation from './pages/teacher/CourseCreation';
-import GradingAndFeedback from './pages/teacher/GradingAndFeedback';
+import AttendanceTracking from './pages/teacher/AttendanceTracking/index';
+import CollaborationTools from './pages/teacher/CollaborationTools/index';
+import Communication from './pages/teacher/Communication/index';
+import CourseCreation from './pages/teacher/Course/index';
+import GradingAndFeedback from './pages/teacher/GradingAndFeedback/index';
 
 //Parent-related imports
 import ParentNavbar from './components/ParentNavbar';

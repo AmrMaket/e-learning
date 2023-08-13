@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LectureForm from '../Lectures/index';
-import './style.css'
+import './style.css';
 
 const CreateCoursePage = () => {
   const [isLectureFormVisible, setIsLectureFormVisible] = useState(false);

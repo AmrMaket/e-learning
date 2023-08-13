@@ -44,7 +44,7 @@ const QuizForm = () => {
               onChange={(e) => setQuestion(e.target.value)}
             />
           </div>
-          <div className='quizz'>
+          <div className='container'>
             <label>Options:</label>
             {options.map((option, index) => (
               <div key={index}>

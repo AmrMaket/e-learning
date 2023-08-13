@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import "./style.css";
 
 const AttendanceSheetModal = ({ students, isOpen, onClose }) => {
-  const [attendance, setAttendance] = useState(
-    students.map((student) => ({
-      id: student.id,
-      name: student.name,
-      present: false,
-    }))
-  );
+  const [attendance, setAttendance] = useState([]);
+  
+  useEffect(() => {
+    if (students) {
+      setAttendance(
+        students.map((student) => ({
+          id: student.id,
+          name: student.name,
+          present: false,
+        }))
+      );
+    }
+  }, [students]);
 
   const handleCheckboxChange = (studentId) => {
     setAttendance((prevAttendance) =>
@@ -35,7 +41,7 @@ const AttendanceSheetModal = ({ students, isOpen, onClose }) => {
         <h2>Attendance Sheet</h2>
         <table>
           <thead>
-            <tr className="present">
+            <tr className="">
               <th>Student Name</th>
               <th>Present</th>
             </tr>

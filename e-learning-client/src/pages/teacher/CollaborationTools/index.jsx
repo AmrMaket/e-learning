@@ -3,7 +3,7 @@ import ProjectCreation from '../../../components/ProjectCreation/index';
 import GroupCollaboration from '../../../components/GroupCollaboration/index';
 
 const CollaborationTools = () => {
-  const [userType, setUserType] = useState('teacher'); // 'teacher' or 'student'
+  const [userType, setUserType] = useState('teacher');
 
   return (
     <div>
