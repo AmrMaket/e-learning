@@ -3,6 +3,8 @@ import CourseProgressList from "../../../components/CourseProgressList";
 import TaskProgressList from "../../../components/TaskProgressList";
 import AssignmentProgressList from "../../../components/AssignmentProgressList";
 import QuizProgressList from "../../../components/QuizProgressList";
+import '../../../base.css';
+
 
 const ProgressTracking = () => {
 
