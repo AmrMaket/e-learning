@@ -4,9 +4,9 @@ import './App.css';
 import TeacherNavbar from './components/TeacherNavbar';
 import AttendanceTracking from './pages/teacher/AttendanceTracking';
 import CollaborationTools from './pages/teacher/CollaborationTools';
-import Communication from './pages/Announcment/index';
+import Communication from './pages/teacher/Communication';
 import CourseCreation from './pages/teacher/CourseCreation';
-import GradingAndFeedback from './pages/Grading/index';
+import GradingAndFeedback from './pages/teacher/GradingAndFeedback';
 
 //Parent-related imports
 import ParentNavbar from './components/ParentNavbar';
@@ -40,7 +40,7 @@ function App() {
 					<TeacherNavbar />
 					<div className="content">
 						<Routes>
-							<Route path="/" element={<CourseCreation />} />
+							<Route path="/" element={<CourseForm />} />
 
 							<Route
 								path="/gradingAndFeedback"
