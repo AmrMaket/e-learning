@@ -1,5 +1,6 @@
-import React from 'react';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import React from "react";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "./styles.css";
 
 function SingleCard({ item }) {
   const overallRatio = (item.assignmentPercentage + item.quizPercentage) / 2;
@@ -14,8 +15,14 @@ function SingleCard({ item }) {
     <div className="card">
       <div className="header">
         <h2>{item.courseName}</h2>
-        <p>{item.teacherName}</p>
-        <p>{item.studentName}</p>
+        <p>
+          <strong>Teacher: </strong>
+          {item.teacherName}
+        </p>
+        <p>
+          <strong>Student: </strong>
+          {item.studentName}
+        </p>
       </div>
       <div className="progress-section">
         <div className="progress-bar" style={progressBarStyles}>
@@ -26,7 +33,7 @@ function SingleCard({ item }) {
               pathColor: `rgba(62, 152, 199, ${overallRatio / 100})`,
               width: `${circleSize}px`,
               height: `${circleSize}px`,
-              textSize: '12px',
+              textSize: "12px",
             })}
           />
           <p>Overall</p>
@@ -36,10 +43,12 @@ function SingleCard({ item }) {
             value={item.assignmentPercentage}
             text={`${item.assignmentPercentage}%`}
             styles={buildStyles({
-              pathColor: `rgba(62, 152, 199, ${item.assignmentPercentage / 100})`,
+              pathColor: `rgba(62, 152, 199, ${
+                item.assignmentPercentage / 100
+              })`,
               width: `${circleSize}px`,
               height: `${circleSize}px`,
-              textSize: '12px',
+              textSize: "12px",
             })}
           />
           <p>Assignments</p>
@@ -52,7 +61,7 @@ function SingleCard({ item }) {
               pathColor: `rgba(62, 152, 199, ${item.quizPercentage / 100})`,
               width: `${circleSize}px`,
               height: `${circleSize}px`,
-              textSize: '12px',
+              textSize: "12px",
             })}
           />
           <p>Quizzes</p>
