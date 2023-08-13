@@ -15,10 +15,8 @@ const CourseProgressList = (props) => {
                     <div>Course Progress: {course.courseProgress}</div>
                 </div>
             ))}
-            
+            </div>
         </div>
-        </div>
-        
     );
 }
  
