@@ -1,24 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
-const Popups = ({ onClose }) => {
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    alert('Course created successfully!');
-    onClose(); 
+const CourseCreationForm = () => {
+  const [courseDetails, setCourseDetails] = useState({
+    title: '',
+    description: '',
+    startDate: '',
+    endDate: ''
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setCourseDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Course Details:', courseDetails);
   };
 
   return (
-    <div className="popup-overlay">
-      <div className="popup-content">
-        <h4>Create New Course</h4>
-        <h4>Quizzes</h4>
-        <h4>Assignments</h4>
-        <h4>Interactive Content</h4>
-      </div>
+    <div className="container">
+      <h2>Create New Course</h2>
+      <form onSubmit={handleSubmit}>
+        <div className='course'>
+          <label >Title:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={courseDetails.title}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className= 'course'>
+          <label >Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            value={courseDetails.description}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <button type='submit' className='create'>Create Course</button>
+      </form>
     </div>
   );
 };
 
-export default Popups;
+export default CourseCreationForm;
