@@ -27,11 +27,95 @@ import StudySupport from './pages/student/StudySupport';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+	const state = 1;
+	if (state === 0) {
+		//admin
+		//return(...admin related)
+	}
+	if (state === 1) {
+		//teacher
+		return (
+			<Router>
+				<div className="App">
+					<TeacherNavbar />
+					<div className="content">
+						<Routes>
+							<Route path="/" element={<CourseCreation />} />
+
+							<Route
+								path="/gradingAndFeedback"
+								element={<GradingAndFeedback />}
+							/>
+							<Route path="/communication" element={<Communication />} />
+							<Route
+								path="/attendanceTracking"
+								element={<AttendanceTracking />}
+							/>
+							<Route
+								path="/collaborationTools"
+								element={<CollaborationTools />}
+							/>
+						</Routes>
+					</div>
+				</div>
+			</Router>
+		);
+	}
+	if (state === 2) {
+		//parent
+		return (
+			<Router>
+				<div className="App">
+					<ParentNavbar />
+					<div className="content">
+						<Routes>
+							<Route path="/" element={<ProgressMonitoring />} />
+
+							<Route
+								path="/communicationWithTeachers"
+								element={<CommunicationWithTeachers />}
+							/>
+							<Route
+								path="/attendanceAndSchedule"
+								element={<AttendanceAndSchedule />}
+							/>
+							<Route
+								path="/notificationsAndReminders"
+								element={<NotificationsAndReminders />}
+							/>
+							<Route
+								path="/parentTeacherConference"
+								element={<ParentTeacherConference />}
+							/>
+						</Routes>
+					</div>
+				</div>
+			</Router>
+		);
+	}
+	if (state === 3) {
+		//student
+		return (
+			<Router>
+				<div className="App">
+					<StudentNavbar />
+					<div className="content">
+						<Routes>
+							<Route path="/" element={<CourseEnrollment />} />
+
+							<Route path="/progressTracking" element={<ProgressTracking />} />
+							<Route
+								path="/interactiveLearning"
+								element={<InteractiveLearning />}
+							/>
+							<Route path="/studySupport" element={<StudySupport />} />
+							<Route path="/offlineLearning" element={<OfflineLearning />} />
+						</Routes>
+					</div>
+				</div>
+			</Router>
+		);
+	}
 }
 
 export default App;
