@@ -1,0 +1,18 @@
+.lecture {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: #009ed8;
+    width: 25%;
+
+}
+
+h3{
+    color: #009ed8;
+}
+
+button {
+    background-color: white;
+    color: #009ed8;
+    margin-left: 15px;
+}

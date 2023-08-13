@@ -5,7 +5,7 @@ import TeacherNavbar from './components/TeacherNavbar';
 import AttendanceTracking from './pages/teacher/AttendanceTracking';
 import CollaborationTools from './pages/teacher/CollaborationTools';
 import Communication from './pages/teacher/Communication';
-import CourseForm from './pages/CourseCreation/index';
+import CourseForm from './components/LecturesOnToggle/index';
 import GradingAndFeedback from './pages/teacher/GradingAndFeedback';
 
 //Parent-related imports
