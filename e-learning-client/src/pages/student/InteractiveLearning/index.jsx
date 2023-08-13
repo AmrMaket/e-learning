@@ -18,7 +18,7 @@ const InteractiveLearning = () => {
     ]);
 
     return (
-        <div className="interactive-learning-main-container flex justify-center">
+        <div className="interactive-learning-main-container flex justify-center padding-l">
             <div className="discussions-container flex flex-col align-center width-40">
                 <Discussion discussions={discussions}/>
             </div>
