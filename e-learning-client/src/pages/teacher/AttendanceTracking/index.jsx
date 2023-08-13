@@ -1,5 +1,5 @@
 import React from 'react';
-import Attendance from '../../../components/StudentAttendance/index';
+import Attendance from '../../../components/AttendanceSheet/index';
 import Recording from '../../../components/Recording/index';
 import './styles.css';
 

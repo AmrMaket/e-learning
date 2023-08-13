@@ -40,7 +40,7 @@ function App() {
 					<TeacherNavbar />
 					<div className="content">
 						<Routes>
-							<Route path="/" element={<CourseForm />} />
+							<Route path="/" element={<CourseCreation />} />
 
 							<Route
 								path="/gradingAndFeedback"
