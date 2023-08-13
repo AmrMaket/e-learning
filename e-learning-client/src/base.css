@@ -95,3 +95,7 @@ img{
 .scroll{
     overflow-x: auto;
 }
+
+.border-right{
+    border-right: 1px solid grey;
+}
