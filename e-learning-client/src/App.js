@@ -6,7 +6,7 @@ import AttendanceTracking from './pages/teacher/AttendanceTracking';
 import CollaborationTools from './pages/teacher/CollaborationTools';
 import Communication from './pages/Announcment/index';
 import CourseCreation from './pages/teacher/CourseCreation';
-import GradingAndFeedback from './pages/teacher/GradingAndFeedback';
+import GradingAndFeedback from './pages/Grading/index';
 
 //Parent-related imports
 import ParentNavbar from './components/ParentNavbar';
