@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->string('description');
+            $table->dateTime('due_date');
+            $table->timestamp('posted_at')->useCurrent();
+            $table->unsignedBigInteger('course_id');
+            // $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+
         });
     }
 

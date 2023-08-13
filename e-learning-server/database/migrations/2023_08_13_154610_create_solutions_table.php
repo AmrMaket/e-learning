@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('solutions', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('question');
+            $table->string('choice1');
+            $table->string('choice2');
+            $table->string('choice3');
+            $table->string('choice4');
+            $table->boolean('is_true');
+            $table->unsignedBigInteger('quiz_id');
+            // $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
+            
         });
     }
 

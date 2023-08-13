@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('lectures', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('google_link');
+            $table->dateTime('time');
+            // $table->unsignedBigInteger('course_id');
+            // $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
         });
     }
 

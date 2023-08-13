@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->dateTime('due_date');
+            $table->integer('grade_overall');
+            $table->unsignedBigInteger('course_id');
+            // $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');  
         });
     }
 

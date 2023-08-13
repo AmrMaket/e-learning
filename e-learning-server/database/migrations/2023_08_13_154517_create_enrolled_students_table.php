@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('enrolled_students', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->timestamp('enrollment_at')->useCurrent();   
+            $table->integer('final_grade');
+            $table->date('finished_at');
+            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('user_id');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
