@@ -4,7 +4,7 @@ import './App.css';
 import TeacherNavbar from './components/TeacherNavbar';
 import AttendanceTracking from './pages/teacher/AttendanceTracking';
 import CollaborationTools from './pages/teacher/CollaborationTools';
-import Communication from './pages/teacher/Communication';
+import Communication from './pages/Announcment/index';
 import CourseCreation from './pages/teacher/CourseCreation';
 import GradingAndFeedback from './pages/teacher/GradingAndFeedback';
 
