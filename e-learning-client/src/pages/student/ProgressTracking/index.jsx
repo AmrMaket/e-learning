@@ -11,22 +11,22 @@ const ProgressTracking = () => {
     ]);
 
     const [tasks, setTasks] = useState ([
-        {title: 'Quiz', courseTitle: 1, grade: 70, id: 1},
-        {title: 'Assignment', courseTitle: 3, grade: 30, id: 2},
+        {title: 'Quiz', courseTitle: 1, grade: 70, deadline: 'date/time', id: 1},
+        {title: 'Assignment', courseTitle: 3, grade: 30, deadline: 'date/time', id: 2},
     ]);
 
     const [assignments, setAssignments] = useState ([
-        {title: 'Practice Figma', courseTitle: 1, grade: 25, id: 1},
-        {title: 'Write a CV', courseTitle: 2, grade: 24, id: 2},
+        {title: 'Practice Figma', courseTitle: 1, grade: 25, deadline: 'date/time', id: 1},
+        {title: 'Write a CV', courseTitle: 2, grade: 24, deadline: 'date/time', id: 2},
     ]);
 
     const [quizzes, setQuizzes] = useState ([
-        {title: 'Analyze COVID Mutations', courseTitle: 3, grade: 68, id: 1},
-        {title: 'Build an E-Commerce Database', courseTitle: 4, grade: 55, id: 2},
+        {title: 'Analyze COVID Mutations', courseTitle: 3, grade: 68, deadline: 'date/time', id: 1},
+        {title: 'Build an E-Commerce Database', courseTitle: 4, grade: 55, deadline: 'date/time', id: 2},
     ]);
 
     return (
-        <div className="progress-tracking-main-container">
+        <div className="progress-tracking-main-container flex flex-col">
             <CourseProgressList courses={courses}/>
             <TaskProgressList tasks={tasks}/>
             <AssignmentProgressList assignments={assignments}/>
