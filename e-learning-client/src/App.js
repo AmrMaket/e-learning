@@ -27,12 +27,12 @@ import StudySupport from './pages/student/StudySupport';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
-	const state = 3;
-	if (state === 0) {
+	const state = 4;
+	if (state === 1) {
 		//admin
 		//return(...admin related)
 	}
-	if (state === 1) {
+	if (state === 2) {
 		//teacher
 		return (
 			<Router>
@@ -61,7 +61,7 @@ function App() {
 			</Router>
 		);
 	}
-	if (state === 2) {
+	if (state === 3) {
 		//parent
 		return (
 			<Router>
@@ -93,7 +93,7 @@ function App() {
 			</Router>
 		);
 	}
-	if (state === 3) {
+	if (state === 4) {
 		//student
 		return (
 			<Router>

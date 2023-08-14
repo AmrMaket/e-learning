@@ -13,8 +13,16 @@ const CourseEnrollment = () => {
     ]);
 
     return (
-        <div className="course-enrollment-main-container flex padding-l">
-            <CourseEnrollmentList courses={courses}/>
+        <div className="course-enrollment-main-container flex flex-col padding-l">
+            <div className="course-enrollment-title">
+                <h2>
+                    Courses:
+                </h2>
+            </div>
+            <div className="course-enrollment-courses">
+                <CourseEnrollmentList courses={courses}/>
+            </div>
+            
         </div>
     );
 }
