@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
+import './style.css';
 
 const AddGrades = ({ students, assignments }) => {
   const [grades, setGrades] = useState({});
 
   const handleGradeChange = (studentId, assignmentId, grade) => {
-    setGrades(prevGrades => ({
-      ...prevGrades,
-      [studentId]: {
-        ...prevGrades[studentId],
-        [assignmentId]: grade
-      }
+  setGrades(prevGrades => ({
+    ...prevGrades,
+    [studentId]: {
+      ...(prevGrades[studentId] || {}),
+      [assignmentId]: grade
+    }
     }));
   };
+
 
   const handleSaveGrades = () => {
     console.log('Grades:', grades); 
