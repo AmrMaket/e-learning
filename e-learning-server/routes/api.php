@@ -24,4 +24,6 @@ Route::get('/courses_available', [StudentController::class, "getCoursesInformati
 Route::post('/student_enrollment', [StudentController::class, "enrollCourse"]);
 Route::get('/blogs_games', [StudentController::class, "getBlogAndCollaborations"]);
 Route::post('/create_blog', [StudentController::class, "createBlog"]);
+Route::get('/get_assignments/{user_id}', [StudentController::class, "getAssignmentsAndCorrected"]);
+Route::get('/get_assignments', [StudentController::class, "getAssignmentsAndCorrected"]);
 

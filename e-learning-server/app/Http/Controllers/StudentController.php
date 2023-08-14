@@ -7,6 +7,10 @@ use App\Models\Course;
 use App\Models\BlogPost;
 use App\Models\Collaboration;
 use App\Models\EnrolledStudent;
+use App\Models\Quiz;
+use App\Models\Assignment;
+use App\Models\StudentAssignment;
+use App\Models\StudentQuiz;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -91,7 +95,22 @@ class StudentController extends Controller
         $blog->title = $request->title ? $request->title : $blog->title;
         $blog->content = $request->content ? $request->content : $blog->content;
         $blog->save();
-        
+
         return response()->json(['blog' => $blog]);
     }
-} 
+
+    public function getAssignmentsAndCorrected(Request $request)
+    {
+        $user = Auth::user();
+        $student_id = $request->user_id;
+        $assignments = Assignment::all();
+        foreach ($assignments as $assignment) {
+            $assignment->course->name;
+        }
+        $corrected_assignments = StudentAssignment::where('student_id', $student_id)->get();
+        return response()->json([
+            'all_assignments' => $assignments,
+            'corrected_assignments' => $corrected_assignments
+        ]);
+    }
+}
