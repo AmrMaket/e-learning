@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\BlogPost;
+use App\Models\Collaboration;
 use App\Models\EnrolledStudent;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -52,4 +54,30 @@ class StudentController extends Controller
         $enroll->save();
         return response()->json(['message' => $enroll]);
     }
+
+    public function getBlogAndCollaborations()
+{
+    $user = Auth::user();
+    $blogPosts = BlogPost::with('student')->get();
+    foreach ($blogPosts as $blogPost) {
+        $blogInfo[] = [
+            'title' => $blogPost->title,
+            'content' => $blogPost->content,
+            'student_name' => $blogPost->student->name,
+        ];
+    }
+    $collaborations = Collaboration::where('type', 'game')->get();
+    foreach ($collaborations as $collaboration) {
+        $gameCollaborationsInfo[] = [
+            'name' => $collaboration->name,
+            'link' => $collaboration->link,
+        ];
+    }
+
+    return response()->json([
+        'status' => 'success',
+        'blog_posts' => $blogInfo,
+        'game_collaborations' => $gameCollaborationsInfo,
+    ]);
+}
 }
