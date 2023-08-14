@@ -113,4 +113,19 @@ class StudentController extends Controller
             'corrected_assignments' => $corrected_assignments
         ]);
     }
+
+    public function getQuizzesAndCorrected(Request $request)
+    {
+        $user = Auth::user();
+        $student_id = $request->user_id;
+        $quizzes = Quiz::all();
+        foreach ($quizzes as $quiz) {
+            $quiz->course->name;
+        }
+        $corrected_quizzes = StudentQuiz::where('student_id', $student_id)->get();
+        return response()->json([
+            'all_quizzes' => $quizzes,
+            'corrected_quizzes' => $corrected_quizzes
+        ]);
+    }
 }
