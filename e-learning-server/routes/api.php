@@ -23,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/courses_available', [StudentController::class, "getCoursesInformation"]);
 Route::post('/student_enrollment', [StudentController::class, "enrollCourse"]);
 Route::get('/blogs_games', [StudentController::class, "getBlogAndCollaborations"]);
+Route::post('/create_blog', [StudentController::class, "createBlog"]);
+
