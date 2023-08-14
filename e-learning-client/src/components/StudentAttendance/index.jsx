@@ -5,7 +5,6 @@ import './styles.css';
 const students = [
   { id: 1, name: "John" },
   { id: 2, name: "Jane" },
-  // Add more student objects
 ];
 
 const App = () => {

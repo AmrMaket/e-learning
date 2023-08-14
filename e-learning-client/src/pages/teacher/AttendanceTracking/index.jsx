@@ -1,5 +1,5 @@
 import React from 'react';
-import Attendance from '../../../components/AttendanceSheet/index';
+import Attendance from '../../../components/StudentAttendance/index';
 import './styles.css';
 
 const AttendaceTracking = () => {
@@ -7,8 +7,7 @@ const AttendaceTracking = () => {
         <div className='container'>
             <div>
                 { <Attendance/>}
-            </div>
-            
+            </div>            
         </div>
      );
 }
