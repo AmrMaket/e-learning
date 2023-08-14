@@ -16,8 +16,7 @@ return new class extends Migration
             $table->boolean('present');
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('course_id');
-            // $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
-            // $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+
         });
     }
 

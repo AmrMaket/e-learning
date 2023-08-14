@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('capacity');
-            $table->dateTime('time');
-            $table->string('calendly');
-            $table->unsignedBigInteger('teacher_id');
+        Schema::table('blog_posts', function (Blueprint $table) {
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
 
-        });
+    });
     }
 
     /**
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        //
     }
 };

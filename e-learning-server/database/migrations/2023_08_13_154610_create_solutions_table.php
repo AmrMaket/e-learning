@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('choice4');
             $table->boolean('is_true');
             $table->unsignedBigInteger('quiz_id');
-            // $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
             
         });
     }

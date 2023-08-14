@@ -18,7 +18,6 @@ return new class extends Migration
             $table->timestamp('submitted_at')->useCurrent();
             $table->unsignedBigInteger('student_id');
            $table->unsignedBigInteger('assignment_id');
-            // $table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('cascade');
         });
     }
 
