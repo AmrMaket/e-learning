@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/student_enrollment', [StudentController::class, "getCoursesInformation"]);
+Route::get('/courses_available', [StudentController::class, "getCoursesInformation"]);
+Route::post('/student_enrollment', [StudentController::class, "enrollCourse"]);
