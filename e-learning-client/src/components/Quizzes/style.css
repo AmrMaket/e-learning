@@ -1,33 +1,10 @@
 .quizz {
-    color: white;
-    display: flex;
-    flex-direction: column;
     background-color: #009ed8;
-    padding-left: 10px;
-    margin-bottom: 10px;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    background-color: #009ed8;
-    width: 50%;
-    margin-top: 20px;
-    margin-left: 15px;
-}
-.preview {
     color: white;
-    width : 50%;
 }
 
-button {
-    margin-top: 10px;
-    background-color: white;
-    color: #009ed8;
-    width: 50%;
-    margin-left: 25%;
-}
-
-h3{
-    margin-left: 10px;
+.contain {
+    background-color: #009ed8;
+    color: white;
+    width: 70%;
 }

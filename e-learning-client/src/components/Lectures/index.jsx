@@ -29,7 +29,8 @@ const LectureForm = ({ courseId, onAddLecture }) => {
   };
 
   return (
-    <div className='container'>
+    <>
+      <div className='containlecture'>
       <h3>Add Lecture</h3>
       <form onSubmit={handleSubmit}>
         <div className='lecture'>
@@ -52,9 +53,11 @@ const LectureForm = ({ courseId, onAddLecture }) => {
             required
           />
         </div>
-        <button type="submit">Post</button>
       </form>
     </div>
+    <button type="submit" className='post'>Post</button>
+    </>
+
   );
 };
 

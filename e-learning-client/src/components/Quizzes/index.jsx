@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './style.css';
 
-const QuizForm = () => {
+const QuizzForm = () => {
   const [questions, setQuestions] = useState([]);
   const [question, setQuestion] = useState('');
   const [options, setOptions] = useState(['', '', '', '']);
@@ -30,7 +30,7 @@ const QuizForm = () => {
   };
 
   return (
-    <div className="container">
+    <div className="contquizz">
       <button onClick={toggleForm}>
         {showForm ? 'Hide Quizzes' : 'Add Quiz'}
       </button>
@@ -44,7 +44,7 @@ const QuizForm = () => {
               onChange={(e) => setQuestion(e.target.value)}
             />
           </div>
-          <div className='container'>
+          <div className='contain'>
             <label>Options:</label>
             {options.map((option, index) => (
               <div key={index}>
@@ -71,7 +71,6 @@ const QuizForm = () => {
         </>
       )}
       <div className="preview">
-        <h3>Quiz Preview</h3>
         {questions.map((q, index) => (
           <div key={index}>
             <p>{q.question}</p>
@@ -88,4 +87,4 @@ const QuizForm = () => {
   );
 };
 
-export default QuizForm;
+export default QuizzForm;

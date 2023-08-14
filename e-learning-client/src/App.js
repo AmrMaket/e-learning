@@ -5,7 +5,7 @@ import TeacherNavbar from './components/TeacherNavbar';
 import AttendanceTracking from './pages/teacher/AttendanceTracking/index';
 import CollaborationTools from './pages/teacher/CollaborationTools/index';
 import Communication from './pages/teacher/Communication/index';
-import CourseCreation from './pages/teacher/Course/index';
+import CourseCreation from './pages/teacher/CourseCreation/index';
 import GradingAndFeedback from './pages/teacher/GradingAndFeedback/index';
 
 //Parent-related imports
@@ -41,7 +41,6 @@ function App() {
 					<div className="content">
 						<Routes>
 							<Route path="/" element={<CourseCreation />} />
-
 							<Route
 								path="/gradingAndFeedback"
 								element={<GradingAndFeedback />}
