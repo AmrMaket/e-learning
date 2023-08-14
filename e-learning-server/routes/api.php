@@ -14,7 +14,7 @@ use App\Http\Controllers\ParenttController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('child_quiz_grades',[ParenttController::class, 'getQuizGrades'] );
+Route::get('child_progress',[ParenttController::class, 'getChildProgress'] );
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
