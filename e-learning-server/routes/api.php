@@ -28,5 +28,4 @@ Route::post('add-or-update-communication/{id?}',[PostController::class,'addOrUpd
 Route::post('add-or-update-attendance/{id?}',[PostController::class,'addOrUpdateAttendance']);
 Route::post('add-or-update-collaboration/{id?}',[PostController::class,'addOrUpdateCollaboration']);
 Route::post('add-or-update-material/{id?}',[PostController::class,'addOrUpdateMaterial']);
-
-
+Route::post('add-or-update-project/{id?}',[PostController::class,'addOrUpdateProject']);

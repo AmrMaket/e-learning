@@ -46,6 +46,24 @@ class PostController extends Controller
     
         return response()->json(["message" => "Quiz added/updated successfully", "quiz" => $quiz]);
     }
+
+    function addOrUpdateProject(Request $request, $id = "add") {
+        if ($id == "add") {
+            $project = new Project;
+        } else {
+            $project = Project::find($id);
+        }
+    
+        $project->project_title = $request->project_title ? $request->project_title : $project->project_title;
+        $project->project_des = $request->project_des ? $request->project_des : $project->project_des;
+        $project->student_name = $request->student_name ? $request->student_namae : $project->student_name;
+        $project->course_id = $request->course_id ? $request->course_id : $project->course_id;
+        $project->student_id = $request->student_id ? $request->student_id : $project->student_id;
+        $project->save();
+    
+        return response()->json(["message" => "Project added/updated successfully", "project" => $project]);
+    }
+
     function addOrUpdateLectures(Request $request, $id = "add") {
         if ($id == "add") {
             $lecture = new Lectures;
