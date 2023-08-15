@@ -70,5 +70,4 @@ function Attendance() {
     </div>
   );
 }
-
 export default Attendance;

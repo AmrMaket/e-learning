@@ -1,120 +1,120 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+
 //Teacher-related imports
-// import TeacherNavbar from './components/TeacherNavbar';
-// import AttendanceTracking from './pages/teacher/AttendanceTracking';
-// import CollaborationTools from './pages/teacher/CollaborationTools';
-// import Communication from './pages/teacher/Communication';
-// import CourseCreation from './pages/teacher/CourseCreation';
-// import GradingAndFeedback from './pages/teacher/GradingAndFeedback';
+import TeacherNavbar from "./components/TeacherNavbar";
+import AttendanceTracking from "./pages/teacher/AttendanceTracking";
+import CollaborationTools from "./pages/teacher/CollaborationTools";
+import Communication from "./pages/teacher/Communication";
+import CourseCreation from "./pages/teacher/CourseCreation";
+import GradingAndFeedback from "./pages/teacher/GradingAndFeedback";
 
 //Parent-related imports
-import ParentNavbar from './components/ParentNavbar';
-import ProgressMonitoring from './pages/parent/ProgressMonitoring';
-import ParentTeacherConference from './pages/parent/ParentTeacherConference';
-import CommunicationWithTeachers from './pages/parent/CommunicationWithTeachers';
-import AttendanceAndSchedule from './pages/parent/AttendanceAndSchedule';
-import NotificationsAndReminders from './pages/parent/NotificationsAndReminders';
+import ParentNavbar from "./components/ParentNavbar";
+import ProgressMonitoring from "./pages/parent/ProgressMonitoring";
+import ParentTeacherConference from "./pages/parent/ParentTeacherConference";
+import CommunicationWithTeachers from "./pages/parent/CommunicationWithTeachers";
+import AttendanceAndSchedule from "./pages/parent/AttendanceAndSchedule";
+import NotificationsAndReminders from "./pages/parent/NotificationsAndReminders";
 
 //Student-related imports
-// import StudentNavbar from './components/StudentNavbar';
-// import CourseEnrollment from './pages/student/CourseEnrollment';
-// import InteractiveLearning from './pages/student/InteractiveLearning';
-// import OfflineLearning from './pages/student/OfflineLearning';
-// import ProgressTracking from './pages/student/ProgressTracking';
-// import StudySupport from './pages/student/StudySupport';
+import StudentNavbar from "./components/StudentNavbar";
+import CourseEnrollment from "./pages/student/CourseEnrollment";
+import InteractiveLearning from "./pages/student/InteractiveLearning";
+import OfflineLearning from "./pages/student/OfflineLearning";
+import ProgressTracking from "./pages/student/ProgressTracking";
+import StudySupport from "./pages/student/StudySupport";
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from "./pages/Login";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function AppRouter() {
-    const state = 2;
-	if (state === 0) {
-		//admin
-		//return(...admin related)
-	}
-	// if (state === 1) {
-	// 	//teacher
-	// 	return (
-	// 		<Router>
-	// 			<div className="App">
-	// 				<TeacherNavbar />
-	// 				<div className="content">
-	// 					<Routes>
-	// 						<Route path="/" element={<CourseCreation />} />
+  const [authenticated, setauthenticated] = useState(null);
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("authenticated");
+    if (loggedInUser) {
+      setauthenticated(loggedInUser);
+    }
+  }, []);
+  if (!authenticated) {
+    return <Login />;
+  } else {
+    const role_id = parseInt(localStorage.getItem("role_id"));
+    console.log(role_id)
+    return (
+      <Router>
+        <div className="App">
+          {role_id === 2 && <TeacherNavbar />}
+          {role_id === 3 && <ParentNavbar />}
+          {role_id === 4 && <StudentNavbar />}
 
-	// 						<Route
-	// 							path="/gradingAndFeedback"
-	// 							element={<GradingAndFeedback />}
-	// 						/>
-	// 						<Route path="/communication" element={<Communication />} />
-	// 						<Route
-	// 							path="/attendanceTracking"
-	// 							element={<AttendanceTracking />}
-	// 						/>
-	// 						<Route
-	// 							path="/collaborationTools"
-	// 							element={<CollaborationTools />}
-	// 						/>
-	// 					</Routes>
-	// 				</div>
-	// 			</div>
-	// 		</Router>
-	// 	);
-	// }
-	if (state === 2) {
-		//parent
-		return (
-			<Router>
-				<div className="App">
-					<ParentNavbar />
-					<div className="content">
-						<Routes>
-							<Route path="/" element={<ProgressMonitoring />} />
+          <div className="content">
+            <Routes>
+              {role_id === 2 && (
+                <>
+                  <Route path="/" element={<CourseCreation />} />
+                  <Route
+                    path="/gradingAndFeedback"
+                    element={<GradingAndFeedback />}
+                  />
+                  <Route path="/communication" element={<Communication />} />
+                  <Route
+                    path="/attendanceTracking"
+                    element={<AttendanceTracking />}
+                  />
+                  <Route
+                    path="/collaborationTools"
+                    element={<CollaborationTools />}
+                  />
+                </>
+              )}
 
-							<Route
-								path="/communicationWithTeachers"
-								element={<CommunicationWithTeachers />}
-							/>
-							<Route
-								path="/attendanceAndSchedule"
-								element={<AttendanceAndSchedule />}
-							/>
-							<Route
-								path="/notificationsAndReminders"
-								element={<NotificationsAndReminders />}
-							/>
-							<Route
-								path="/parentTeacherConference"
-								element={<ParentTeacherConference />}
-							/>
-						</Routes>
-					</div>
-				</div>
-			</Router>
-		);
-	}
-	// if (state === 3) {
-	// 	//student
-	// 	return (
-	// 		<Router>
-	// 			<div className="App">
-	// 				<StudentNavbar />
-	// 				<div className="content">
-	// 					<Routes>
-	// 						<Route path="/" element={<CourseEnrollment />} />
+              {role_id === 3 && (
+                <>
+                  <Route path="/" element={<ProgressMonitoring />} />
+                  <Route
+                    path="/communicationWithTeachers"
+                    element={<CommunicationWithTeachers />}
+                  />
+                  <Route
+                    path="/attendanceAndSchedule"
+                    element={<AttendanceAndSchedule />}
+                  />
+                  <Route
+                    path="/notificationsAndReminders"
+                    element={<NotificationsAndReminders />}
+                  />
+                  <Route
+                    path="/parentTeacherConference"
+                    element={<ParentTeacherConference />}
+                  />
+                </>
+              )}
 
-	// 						<Route path="/progressTracking" element={<ProgressTracking />} />
-	// 						<Route
-	// 							path="/interactiveLearning"
-	// 							element={<InteractiveLearning />}
-	// 						/>
-	// 						<Route path="/studySupport" element={<StudySupport />} />
-	// 						<Route path="/offlineLearning" element={<OfflineLearning />} />
-	// 					</Routes>
-	// 				</div>
-	// 			</div>
-	// 		</Router>
-	// 	);
-	// }
+              {role_id === 4 && (
+                <>
+                  <Route path="/" element={<CourseEnrollment />} />
+                  <Route
+                    path="/progressTracking"
+                    element={<ProgressTracking />}
+                  />
+                  <Route
+                    path="/interactiveLearning"
+                    element={<InteractiveLearning />}
+                  />
+                  <Route path="/studySupport" element={<StudySupport />} />
+                  <Route
+                    path="/offlineLearning"
+                    element={<OfflineLearning />}
+                  />
+                </>
+              )}
+            </Routes>
+          </div>
+        </div>
+      </Router>
+    );
+  }
 }
 
-export default AppRouter
+export default AppRouter;
