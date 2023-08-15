@@ -19,7 +19,6 @@ return new class extends Migration
             $table->unsignedBigInteger('role_id');
             $table->unsignedBigInteger('child_id')->nullable();
             $table->timestamps();
-
         });
     }
 

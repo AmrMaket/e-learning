@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('message');
             $table->unsignedBigInteger('sender_id');
             $table->unsignedBigInteger('recipient_id');
-
+            // $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('recipient_id')->references('id')->on('users')->onDelete('cascade');
             
         });
     }

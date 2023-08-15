@@ -5,20 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Material extends Model
+class Lecture extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $fillable = [
-        'title',
-        'uploaded_files',
-        'course_id'
+        'google_link',
+        'Time',
     ];
 
-
     public function course () {
-        return $this->belongsTo(Course::class, 'course_id');
+        return $this->belongsTo(course::class, 'course_id');
     }
 }

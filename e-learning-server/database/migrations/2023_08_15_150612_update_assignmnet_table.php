@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('student_quizzes', function (Blueprint $table) {
-            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
-            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
+        Schema::table('assignments', function (Blueprint $table) {
+            $table->integer('grade_overall');
         });
     }
 
