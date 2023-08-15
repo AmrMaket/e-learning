@@ -78,6 +78,15 @@ class ParenttController extends Controller
         try{
         // $parentId = Auth::user();
         $parentId = 2;
+
+        $coursesResults = DB::table('users')
+        -> join('enrolled_students', 'users.child_id', '=', 'enrolled_students.user_id')
+        -> join('courses', 'enrolled_students.course_id', '=', 'courses.id')
+        -> where('users.id', $parentId)
+        -> select(
+            'courses.name as enrolled_course' 
+        )
+        -> get();
         
         $quizResults = DB::table('users')
         -> join('student_quizzes', 'users.child_id', '=', 'student_quizzes.student_id')
@@ -93,16 +102,18 @@ class ParenttController extends Controller
 
         $averagedQuizResults = [];
         $groupedQuizResults = collect($quizResults)->groupBy('course_name');
-    
+
         foreach ($groupedQuizResults as $courseName => $group) {
             $totalStudentGrade = $group->sum('quiz_grade');
+            $totalQuizGradeOverall = $group->sum('quiz_grade_overall');
             $numQuizzes = $group->count();
-            $averageStudentGrade = $numQuizzes > 0 ? $totalStudentGrade / $numQuizzes : 0;
+            
+            $averageStudentGrade = $numQuizzes > 0 ? ($totalStudentGrade / $totalQuizGradeOverall) * 100 : 0;
 
             $averagedQuizResults[] = [
                 'course_name' => $courseName,
-                'avg_quiz_grade' => $averageStudentGrade,
-                'quiz_grade_overall' => $group->first()->quiz_grade_overall,
+                'avg_quiz_grade' => round($averageStudentGrade, 2),
+                'quiz_grade_overall' => 100,
             ];
         }
 
@@ -133,16 +144,26 @@ class ParenttController extends Controller
 
         $mergedResults = [];
 
-        foreach ($averagedQuizResults as $quizResult) {
-            $courseName = $quizResult['course_name'];
+        $coursesResults = json_decode($coursesResults, true);
+
+        foreach ($coursesResults as $courseResult) {
+            $courseName = $courseResult['enrolled_course'];
             $mergedResults[$courseName]['course_name'] = $courseName;
-            $mergedResults[$courseName]['avg_quiz_grade'] = $quizResult['avg_quiz_grade'];
-            $mergedResults[$courseName]['quiz_grade_overall'] = $quizResult['quiz_grade_overall'];
             $mergedResults[$courseName]['avg_assignment_grade'] = null;
+            $mergedResults[$courseName]['avg_quiz_grade'] = null;
+            $mergedResults[$courseName]['quiz_grade_overall'] = null;
 
             foreach ($averagedAssignmentResults as $result) {
                 if ($result['course_name'] === $courseName && isset($result['avg_assignment_grade'])) {
                     $mergedResults[$courseName]['avg_assignment_grade'] = $result['avg_assignment_grade'];
+                    break;
+                }
+            }
+
+            foreach ($averagedQuizResults as $result) {
+                if ($result['course_name'] === $courseName && isset($result['avg_quiz_grade']) && isset($result['quiz_grade_overall'])) {
+                    $mergedResults[$courseName]['avg_quiz_grade'] = $result['avg_quiz_grade'];
+                    $mergedResults[$courseName]['quiz_grade_overall'] = $result['quiz_grade_overall'];
                     break;
                 }
             }
