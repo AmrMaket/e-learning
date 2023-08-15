@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('submitted_at')->useCurrent();
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('quiz_id');
+            // $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
 
         });
     }

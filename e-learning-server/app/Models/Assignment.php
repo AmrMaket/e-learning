@@ -9,13 +9,20 @@ class Assignment extends Model
 {
     use HasFactory;
 
+    public $timestamps = false; // Disable automatic timestamps
+
     protected $fillable = [
-        'due_date',
         'name',
         'description',
+        'due_date',
+        'posted_at',
+        'course_id',
+        // Add other columns here
     ];
 
-    public function course () {
-        return $this->belongsTo(course::class, 'course_id');
+    // Define a relationship to the Course model (if applicable)
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
     }
 }

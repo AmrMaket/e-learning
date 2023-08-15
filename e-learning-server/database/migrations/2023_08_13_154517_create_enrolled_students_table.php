@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('finished_at');
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('user_id');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }

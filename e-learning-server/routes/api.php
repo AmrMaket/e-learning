@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+Route::post('assignments/add-or-update/{id?}', [PostController::class, 'addOrUpdateAssignment']);
+Route::post('add-or-update-quiz/{id?}', [PostController::class, 'addOrUpdateQuiz']);
+Route::post('add-or-update-lectures/{id?}',[PostController::class,'addOrUpdateLectures']);
+Route::post('add-or-update-communication/{id?}',[PostController::class,'addOrUpdateCommunication']);
+Route::post('add-or-update-attendance/{id?}',[PostController::class,'addOrUpdateAttendance']);
+Route::post('add-or-update-collaboration/{id?}',[PostController::class,'addOrUpdateCollaboration']);
+Route::post('add-or-update-material/{id?}',[PostController::class,'addOrUpdateMaterial']);
+
+

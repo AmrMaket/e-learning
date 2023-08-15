@@ -5,15 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Material extends Model
+class Quiz extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
     protected $fillable = [
-        'title',
-        'uploaded_files',
-        'course_id'
+        'name',
+        'due_date',
+        'grade_overall',
+        'course_id',
     ];
+
+
 }

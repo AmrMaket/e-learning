@@ -18,6 +18,7 @@ return new class extends Migration
             $table->dateTime('due_date');
             $table->timestamp('posted_at')->useCurrent();
             $table->unsignedBigInteger('course_id');
+            // $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
 
         });
     }

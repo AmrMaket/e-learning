@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Material extends Model
+class Attendance extends Model
 {
     use HasFactory;
+
 
     public $timestamps = false;
 
     protected $fillable = [
-        'title',
-        'uploaded_files',
+        'present',
+        'student_id',
         'course_id'
     ];
 }
