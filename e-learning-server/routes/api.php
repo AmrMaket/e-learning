@@ -21,6 +21,17 @@ use App\Http\Controllers\API\AuthController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::controller(AuthController::class)->group(function () {
+    Route::post('login', 'login');
+    Route::post('register', 'register');
+    Route::post('logout', 'logout');
+    Route::post('refresh', 'refresh');
+});
+
 Route::post('child_progress',[ParenttController::class, 'getChildProgress'] );
 Route::post('parent_send_message',[ParenttController::class, 'sendMessage'] );
 Route::post('get_parent_messages',[ParenttController::class, 'getMessage'] );
@@ -30,12 +41,6 @@ Route::post('get_quizzes_notification',[ParenttController::class, 'getQuizzes'] 
 Route::post('get_assignments_notification',[ParenttController::class, 'getAssignments'] );
 Route::post('get_teacher_info',[ParenttController::class, 'getTeacherInfo'] );
 Route::resource('communications', CommunicationController::class);
-
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 
 Route::get('/courses_available', [StudentController::class, "getCoursesInformation"]);
 Route::post('/student_enrollment', [StudentController::class, "enrollCourse"]);
@@ -47,10 +52,5 @@ Route::get('/get_quizzes/{user_id}', [StudentController::class, "getQuizzesAndCo
 Route::get('/get_quizzes', [StudentController::class, "getQuizzesAndCorrected"]);
 Route::get('/calendly', [StudentController::class, "getTeacherCalendly"]);
 
-Route::controller(AuthController::class)->group(function () {
-    Route::post('login', 'login');
-    Route::post('register', 'register');
-    Route::post('logout', 'logout');
-    Route::post('refresh', 'refresh');
-});
+
 
