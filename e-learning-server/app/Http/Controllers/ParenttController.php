@@ -206,10 +206,43 @@ class ParenttController extends Controller
     }
 
     public function getMessage(Request $request) {
+
+        // $parentId = Auth::user();
         $parentId = 2;
         $messages = Communication::where('recipient_id', $parentId)->get();
         return response()->json([
             'messages' => $messages,
         ]);
+    }
+
+    public function getAttendance() {
+
+        // $parentId = Auth::user();
+        $parentId = 2;
+        try{
+        $attendanceResults = DB::table('users')
+        -> join('attendances', 'users.child_id', '=', 'attendances.student_id')
+        -> join('lectures', 'attendances.lecture_id', '=', 'lectures.id')
+        -> join('courses', 'lectures.course_id', '=', 'courses.id')
+        -> where('users.id', $parentId)
+        -> select(
+            'courses.name as course_name',
+            'lectures.time as lecture_time',
+            'attendances.present as presence',
+        )
+        -> get();
+
+        return response()->json([
+            'status' => 'success',
+            'results' => $attendanceResults,
+        ]);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred',
+            ], 500);
+        }
     }
 }

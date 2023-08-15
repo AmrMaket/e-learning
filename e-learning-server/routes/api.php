@@ -18,7 +18,8 @@ use App\Http\Controllers\CommunicationController;
 Route::get('child_progress',[ParenttController::class, 'getChildProgress'] );
 Route::post('send_message',[ParenttController::class, 'sendMessage'] );
 Route::get('get_message',[ParenttController::class, 'getMessage'] );
-Route::resource('communications', CommunicationController::class);  
+Route::resource('communications', CommunicationController::class);
+Route::get('get_attendance',[ParenttController::class, 'getAttendance'] );
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
