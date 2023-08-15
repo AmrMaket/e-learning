@@ -10,6 +10,7 @@ use App\Models\Communication;
 use App\Models\Attendance;
 use App\Models\Collaboration;
 use App\Models\Material;
+use App\Models\Project;
 
 class PostController extends Controller
 {
@@ -56,7 +57,7 @@ class PostController extends Controller
     
         $project->project_title = $request->project_title ? $request->project_title : $project->project_title;
         $project->project_des = $request->project_des ? $request->project_des : $project->project_des;
-        $project->student_name = $request->student_name ? $request->student_namae : $project->student_name;
+        $project->student_name = $request->student_name ? $request->student_name : $project->student_name;
         $project->course_id = $request->course_id ? $request->course_id : $project->course_id;
         $project->student_id = $request->student_id ? $request->student_id : $project->student_id;
         $project->save();
