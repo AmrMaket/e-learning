@@ -21,6 +21,8 @@ Route::get('get_message',[ParenttController::class, 'getMessage'] );
 Route::resource('communications', CommunicationController::class);
 Route::get('get_attendance',[ParenttController::class, 'getAttendance'] );
 Route::get('get_quizzes_notification',[ParenttController::class, 'getQuizzes'] );
+Route::get('get_assignments_notification',[ParenttController::class, 'getAssignments'] );
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

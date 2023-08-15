@@ -276,4 +276,33 @@ class ParenttController extends Controller
             ], 500);
         }
     }
+
+    public function getAssignments() {
+
+        // $parentId = Auth::user();
+        $parentId = 2;
+        try{
+        $assignmentNotifyResults = DB::table('users')
+        -> join('student_assignments', 'users.child_id', '=', 'student_assignments.student_id')
+        -> join('assignments', 'student_assignments.assignment_id', '=', 'assignments.id')
+        -> where('users.id', $parentId)
+        -> select(
+            'assignments.name as assignment_name',
+            'assignments.due_date as due_date',
+        )
+        -> get();
+
+        return response()->json([
+            'status' => 'success',
+            'results' => $assignmentNotifyResults,
+        ]);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred',
+            ], 500);
+        }
+    }
 }
