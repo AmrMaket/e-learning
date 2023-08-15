@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('enrolled_students', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
         });
     }
 
