@@ -16,6 +16,7 @@ const Grades = () => {
     // fileType.startsWith("image/")         ? setFileType("image")         :
     // setFileType("pdf"); }
 
+
     return (
         <div className="grades">
             <div className="top-grades">
