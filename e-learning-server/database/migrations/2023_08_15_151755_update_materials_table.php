@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('student_assignments', function (Blueprint $table) {
-            $table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('cascade');
-            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
-        });
+        Schema::table('materials', function (Blueprint $table) {
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+
+    });
     }
 
     /**

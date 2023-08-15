@@ -9,8 +9,21 @@ class Quiz extends Model
 {
     use HasFactory;
 
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'name',
+        'due_date',
+        'grade_overall',
+        'course_id',
+    ];
+
+
+
     public function course()
     {
         return $this->belongsTo(Course::class);
     }
+
 }

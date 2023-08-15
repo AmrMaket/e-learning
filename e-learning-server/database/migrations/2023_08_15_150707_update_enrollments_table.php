@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('collaborations', function (Blueprint $table) {
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+        Schema::table('enrolled_students', function (Blueprint $table) {
+            $table->timestamps();
         });
     }
 

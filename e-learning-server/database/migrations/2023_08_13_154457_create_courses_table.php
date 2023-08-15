@@ -17,7 +17,8 @@ return new class extends Migration
             $table->integer('capacity');
             $table->dateTime('time');
             $table->string('calendly');
-            $table->unsignedBigInteger('teacher_id');
+            // $table->unsignedBigInteger('teacher_id');
+            // $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }
