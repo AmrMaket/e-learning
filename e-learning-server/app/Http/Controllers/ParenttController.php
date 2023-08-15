@@ -14,7 +14,7 @@ class ParenttController extends Controller
 {
     public function index()
     {
-        $parent = Parentt::all();
+        $parent = User::where('role_id', 3)->get();
         return response()->json($parent);
     }
 
@@ -37,7 +37,7 @@ class ParenttController extends Controller
             return response()->json($validator->errors(), 500);
         }
 
-        $parent = Parentt::create($request->all());
+        $parent = User::create($request->all());
         return response()->json($parent, 200);
     }
 
@@ -75,11 +75,12 @@ class ParenttController extends Controller
         return response()->json('',200);
     }
 
-    public function getChildProgress()
+    public function getChildProgress(Request $request)
     {
         try{
         // $parentId = Auth::user();
-        $parentId = 2;
+        // $parentId = 2;
+        $parentId = $request->get('parent_id');
 
         $coursesResults = DB::table('users')
         -> join('enrolled_students', 'users.child_id', '=', 'enrolled_students.user_id')
@@ -190,7 +191,8 @@ class ParenttController extends Controller
     public function sendMessage(Request $request) {
         
         // $parentId = Auth::user();
-        $parentId = 2;
+        // $parentId = 2;
+        $parentId = $request->get('parent_id');
         $teacherId = $request->input('recipient_id');
         $message = $request->input('message');
      
@@ -210,17 +212,19 @@ class ParenttController extends Controller
     public function getMessage(Request $request) {
 
         // $parentId = Auth::user();
-        $parentId = 2;
+        // $parentId = 2;
+        $parentId = $request->get('parent_id');
         $messages = Communication::where('recipient_id', $parentId)->get();
         return response()->json([
             'messages' => $messages,
         ]);
     }
 
-    public function getAttendance() {
+    public function getAttendance(Request $request) {
 
         // $parentId = Auth::user();
-        $parentId = 2;
+        // $parentId = 2;
+        $parentId = $request->get('parent_id');
         try{
         $attendanceResults = DB::table('users')
         -> join('attendances', 'users.child_id', '=', 'attendances.student_id')
@@ -248,10 +252,11 @@ class ParenttController extends Controller
         }
     }
 
-    public function getQuizzes() {
+    public function getQuizzes(Request $request) {
 
         // $parentId = Auth::user();
-        $parentId = 2;
+        // $parentId = 2;
+        $parentId = $request->get('parent_id');
         try{
         $quizNotifyResults = DB::table('users')
         -> join('student_quizzes', 'users.child_id', '=', 'student_quizzes.student_id')
@@ -277,10 +282,11 @@ class ParenttController extends Controller
         }
     }
 
-    public function getAssignments() {
+    public function getAssignments(Request $request) {
 
         // $parentId = Auth::user();
-        $parentId = 2;
+        // $parentId = 2;
+        $parentId = $request->get('parent_id');
         try{
         $assignmentNotifyResults = DB::table('users')
         -> join('student_assignments', 'users.child_id', '=', 'student_assignments.student_id')
@@ -306,10 +312,11 @@ class ParenttController extends Controller
         }
     }
 
-    public function getTeacherInfo() {
+    public function getTeacherInfo(Request $request) {
 
         // $parentId = Auth::user();
-        $parentId = 2;
+        // $parentId = 2;
+        $parentId = $request->get('parent_id');
         $childId = User::where('id', $parentId)->pluck('child_id')->first();
 
         try{

@@ -15,14 +15,14 @@ use App\Http\Controllers\CommunicationController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('child_progress',[ParenttController::class, 'getChildProgress'] );
-Route::post('send_message',[ParenttController::class, 'sendMessage'] );
-Route::get('get_message',[ParenttController::class, 'getMessage'] );
-Route::resource('communications', CommunicationController::class);
-Route::get('get_attendance',[ParenttController::class, 'getAttendance'] );
-Route::get('get_quizzes_notification',[ParenttController::class, 'getQuizzes'] );
-Route::get('get_assignments_notification',[ParenttController::class, 'getAssignments'] );
-Route::get('get_teacher_info',[ParenttController::class, 'getTeacherInfo'] );
+Route::post('child_progress',[ParenttController::class, 'getChildProgress'] );
+Route::post('parent_send_message',[ParenttController::class, 'sendMessage'] );
+Route::post('get_parent_messages',[ParenttController::class, 'getMessage'] );
+Route::resource('parents', ParenttController::class);
+Route::post('get_attendance',[ParenttController::class, 'getAttendance'] );
+Route::post('get_quizzes_notification',[ParenttController::class, 'getQuizzes'] );
+Route::post('get_assignments_notification',[ParenttController::class, 'getAssignments'] );
+Route::post('get_teacher_info',[ParenttController::class, 'getTeacherInfo'] );
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
