@@ -8,6 +8,7 @@ use App\Models\Communication;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CommunicationController;
 
 class ParenttController extends Controller
 {
@@ -192,17 +193,18 @@ class ParenttController extends Controller
         $parentId = 2;
         $teacherId = $request->input('recipient_id');
         $message = $request->input('message');
-
+     
+        // return $message;
         $communication = Communication::create([
             'message' => $message,
             'sender_id' => $parentId,
             'recipient_id' => $teacherId,
         ]);
     
-        return response()->json([
-            'message' => 'Communication sent successfully',
-            'communication' => $message,
-        ], 201);
+        // return response()->json([
+        //     'message' => 'Communication sent successfully',
+        //     'communication' => $message,
+        // ], 201);
     }
 
     public function getMessage(Request $request) {
@@ -235,6 +237,35 @@ class ParenttController extends Controller
         return response()->json([
             'status' => 'success',
             'results' => $attendanceResults,
+        ]);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred',
+            ], 500);
+        }
+    }
+
+    public function getQuizzes() {
+
+        // $parentId = Auth::user();
+        $parentId = 2;
+        try{
+        $quizNotifyResults = DB::table('users')
+        -> join('student_quizzes', 'users.child_id', '=', 'student_quizzes.student_id')
+        -> join('quizzes', 'student_quizzes.quiz_id', '=', 'quizzes.id')
+        -> where('users.id', $parentId)
+        -> select(
+            'quizzes.name as quiz_name',
+            'quizzes.due_date as due_date',
+        )
+        -> get();
+
+        return response()->json([
+            'status' => 'success',
+            'results' => $quizNotifyResults,
         ]);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
