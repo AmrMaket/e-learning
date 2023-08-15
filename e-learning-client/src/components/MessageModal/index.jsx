@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import "./styles.css";
+
+import "./style.css";
+
 
 function MessageModal({ closeModal, sendMessage }) {
   const [message, setMessage] = useState("");
@@ -9,8 +11,13 @@ function MessageModal({ closeModal, sendMessage }) {
   };
 
   const handleSendClick = () => {
-    sendMessage(message);
-    closeModal();
+
+    if (message.trim() !== "") {
+      sendMessage(message);
+      closeModal();
+    } else {
+      alert("Please enter a message before sending.");
+    }
   };
 
   return (
