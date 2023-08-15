@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import Input from "../../components/Input";
 import "./styles.css";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const [authenticated, setauthenticated] = useState(
+    localStorage.getItem(localStorage.getItem("authenticated") || false)
+  );
   // const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: "",
@@ -17,12 +20,25 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/login", credentials);    
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/login",
+        credentials,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.status === 200) {
         const responseData = response?.data;
         if (responseData) {
+          setauthenticated(true)         
+          localStorage.setItem("authenticated", true);
           localStorage.setItem("token", responseData.authorization.token);
-          // navigate("/landing");
+          localStorage.setItem("role_id", responseData.user.role_id);
+          window.location.reload(false);
+          // navigate("/");
           console.log("logged");
         }
       }
@@ -30,7 +46,6 @@ function Login() {
       console.log("Can't log in: " + error);
     }
   };
-  
 
   return (
     <div className="container">
