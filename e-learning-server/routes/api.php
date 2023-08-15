@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ParenttController;
+use App\Http\Controllers\CommunicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,9 @@ use App\Http\Controllers\ParenttController;
 |
 */
 Route::get('child_progress',[ParenttController::class, 'getChildProgress'] );
-
+Route::post('send_message',[ParenttController::class, 'sendMessage'] );
+Route::get('get_message',[ParenttController::class, 'getMessage'] );
+Route::resource('communications', CommunicationController::class);  
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

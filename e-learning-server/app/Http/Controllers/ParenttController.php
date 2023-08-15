@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Communication;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -183,5 +184,32 @@ class ParenttController extends Controller
                 'message' => 'An error occurred',
             ], 500);
         }
+    }
+
+    public function sendMessage(Request $request) {
+        
+        // $parentId = Auth::user();
+        $parentId = 2;
+        $teacherId = $request->input('recipient_id');
+        $message = $request->input('message');
+
+        $communication = Communication::create([
+            'message' => $message,
+            'sender_id' => $parentId,
+            'recipient_id' => $teacherId,
+        ]);
+    
+        return response()->json([
+            'message' => 'Communication sent successfully',
+            'communication' => $message,
+        ], 201);
+    }
+
+    public function getMessage(Request $request) {
+        $parentId = 2;
+        $messages = Communication::where('recipient_id', $parentId)->get();
+        return response()->json([
+            'messages' => $messages,
+        ]);
     }
 }
