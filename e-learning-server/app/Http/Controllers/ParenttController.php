@@ -192,21 +192,26 @@ class ParenttController extends Controller
         
         // $parentId = Auth::user();
         // $parentId = 2;
-        $parentId = $request->get('parent_id');
+        $parentId = $request->get('sender_id');
         $teacherId = $request->input('recipient_id');
         $message = $request->input('message');
      
-        // return $message;
-        $communication = Communication::create([
+        $data = [
             'message' => $message,
             'sender_id' => $parentId,
             'recipient_id' => $teacherId,
-        ]);
+        ];
     
-        // return response()->json([
-        //     'message' => 'Communication sent successfully',
-        //     'communication' => $message,
-        // ], 201);
+        DB::table('communications')->insert($data);
+
+        // $communication = new Communication([
+        //     'message'=> $message,
+        //     'sender_id'=> $parentId,
+        //     'recipient_id'=> $teacherId,
+        // ]);
+        // $communication->save();
+        return response()->json(['message' => 'Communication saved successfully'], 200);
+    
     }
 
     public function getMessage(Request $request) {
