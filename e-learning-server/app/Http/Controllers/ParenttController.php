@@ -305,4 +305,35 @@ class ParenttController extends Controller
             ], 500);
         }
     }
+
+    public function getTeacherInfo() {
+
+        // $parentId = Auth::user();
+        $parentId = 2;
+        $childId = User::where('id', $parentId)->pluck('child_id')->first();
+
+        try{
+            $teachersResults = DB::table('enrolled_students')
+            -> join('courses', 'enrolled_students.course_id', '=', 'courses.id')
+            -> join('users', 'courses.teacher_id', '=', 'users.id')
+            -> where('enrolled_students.user_id', $childId)
+            -> select(
+                'users.name as teacher_name',
+                'courses.calendly as calendly',
+            )
+            -> get();
+    
+            return response()->json([
+                'status' => 'success',
+                'results' => $teachersResults,
+            ], 200, [], JSON_UNESCAPED_SLASHES);
+            } catch (\Exception $e) {
+                Log::error($e->getMessage());
+            
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'An error occurred',
+                ], 500);
+            }
+    }
 }
