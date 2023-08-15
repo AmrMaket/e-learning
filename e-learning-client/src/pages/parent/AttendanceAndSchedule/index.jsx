@@ -62,7 +62,7 @@ function Attendance() {
       });
   }, []);
   return (
-    <div className="container">
+    <div className="containers">
       {/* without dummy_data hon use attendancesData  */}
       {dummy_data.map((item) => (
         <SingleAttendance key={item.id} item={item} />

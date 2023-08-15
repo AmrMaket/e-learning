@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.css';
+import './lectures.css';
 
 const LectureForm = ({ courseId, onAddLecture }) => {
   const [lectureTitle, setLectureTitle] = useState('');

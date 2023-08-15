@@ -5,7 +5,7 @@
     margin-right: 20px;
   }
   
-  input {
+  .input-main {
     height: 40px;
     width: 100%;
     padding: 10px;
@@ -16,7 +16,7 @@
     transition: border-color 0.3s, background-color 0.3s;
   }
   
-  input:focus {
+  .input-main:focus {
     outline: none;
     border-color: #009ed8;
     background-color: #fff;

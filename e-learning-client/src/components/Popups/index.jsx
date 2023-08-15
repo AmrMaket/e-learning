@@ -23,7 +23,7 @@ const CourseCreationForm = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-course">
       <h2>Create New Course</h2>
       <form onSubmit={handleSubmit}>
         <div className='course'>

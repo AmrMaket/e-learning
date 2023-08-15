@@ -5,9 +5,9 @@
 }
 
 
-.header h3 {
+/* .header h3 {
     color: #009ed8;
-}
+} */
 .container{
     display: flex;
     flex-direction: column;
@@ -16,14 +16,14 @@
     margin-top: 20px;
 }
 
-.header{
+/* .header{
     border: 1px solid #009ed8;
     color: #009ed8;
     height: 50px;
     width: 90%;
     display: flex;
     justify-content: center;
-}
+} */
 
 .body{
     border: 1px solid #009ed8;

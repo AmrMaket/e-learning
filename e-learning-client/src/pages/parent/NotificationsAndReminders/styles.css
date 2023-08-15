@@ -4,13 +4,13 @@
   margin-top: 60px;
 }
 
-.container {
+.container-reminder {
   align-items: center;
   display: flex;
   flex-direction: column;
 }
 
-h3 {
+.title-type {
   margin: 10px 0px;
 }
 

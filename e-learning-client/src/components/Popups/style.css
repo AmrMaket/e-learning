@@ -30,7 +30,7 @@
     font-family: 'Ubuntu', sans-serif;
   }
 
-  .container {
+  .container-course {
     position: fixed;
     bottom: 110px; 
     right: 25px; 
@@ -46,10 +46,10 @@
     flex-direction: column;
   }
 
-  button{
+  /* button{
     margin-top: 10px;
     background-color: white;
     color: #009ed8;
     font-weight: 100;
-  }
+  } */
   

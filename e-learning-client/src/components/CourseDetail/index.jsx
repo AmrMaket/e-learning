@@ -17,7 +17,7 @@ const CourseDetail = () => {
   return (
     <div>
       <div className='containerAll'>
-        <h1>{courseTitle}</h1>
+        <h1 className=".course-tit">{courseTitle}</h1>
         <button className="openCourse" onClick={toggleShowComponents}>
           {showComponents ? 'Close Course' : 'Open Course'}
         </button>

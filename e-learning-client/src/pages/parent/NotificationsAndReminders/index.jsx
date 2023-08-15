@@ -61,8 +61,8 @@ function Reminders() {
   }, []);
   return (
     <div className="reminder-wrapper">
-      <div className="container">
-        <h3>Quizzes</h3>
+      <div className="container-reminder">
+        <h3 className="title-type">Quizzes</h3>
         <div className="reminders">
           {/* add the states */}
           {quiz_dummy.map((item) => (
@@ -70,8 +70,8 @@ function Reminders() {
           ))}
         </div>
       </div>
-      <div className="container">
-        <h3>Assignments</h3>
+      <div className="container-reminder">
+        <h3 className="title-type">Assignments</h3>
         <div className="reminders">
           {/* add the states */}
           {assignment_dummy.map((item) => (

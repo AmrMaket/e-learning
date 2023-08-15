@@ -20,8 +20,8 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1>Attendance Management</h1>
-      <button onClick={openModal}>Attendance Sheet</button>
+      <h1 className="h1-tags">Attendance Management</h1>
+      <button className="btnn" onClick={openModal}>Attendance Sheet</button>
       <AttendanceSheetModal
         students={students}
         isOpen={isModalOpen}

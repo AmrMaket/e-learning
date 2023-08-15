@@ -1,5 +1,5 @@
 import React, { useState , useEffect} from "react";
-import '../AttendanceSheet/style.css';
+import './attendancesheet.css';
 
 const AttendanceSheet = ({ students, isOpen, onClose }) => {
   const [attendance, setAttendance] = useState([]);
@@ -49,8 +49,8 @@ const AttendanceSheet = ({ students, isOpen, onClose }) => {
   return (
     <div className="attendance-modal">
       <div className="modal-content">
-        <h2>Attendance Sheet</h2>
-        <table>
+        <h2 className="h22">Attendance Sheet</h2>
+        <table className="table-style">
           <thead>
             <tr>
               <th>Student Name</th>
@@ -82,7 +82,7 @@ const AttendanceSheet = ({ students, isOpen, onClose }) => {
             ))}
           </tbody>
         </table>
-        <button onClick={handleSubmit}>Save</button>
+        <button className="bt-btn" onClick={handleSubmit}>Save</button>
       </div>
     </div>
   );

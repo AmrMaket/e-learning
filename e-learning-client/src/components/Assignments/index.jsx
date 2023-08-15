@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.css';
+import './assignment.css';
 
 const AssignmentForm = ({ courseId, onAddAssignment }) => {
   const [assignmentTitle, setAssignmentTitle] = useState('');
@@ -36,40 +36,43 @@ const AssignmentForm = ({ courseId, onAddAssignment }) => {
   };
 
   return (
-    <>
-      <div className="assignment">
-        <h3>Create New Assignment</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="input">
-            <label>Title:</label>
-            <input
-              type="text"
-              value={assignmentTitle}
-              onChange={handleTitleChange}
-              required
-            />
-          </div>
-          <div className="input">
-            <label>Requirements:</label>
-            <textarea
-              value={assignmentRequirements}
-              onChange={handleRequirementsChange}
-              required
-            />
-          </div>
-          <div className="input">
-            <label>Due Date:</label>
-            <input
-              type="date"
-              value={dueDate}
-              onChange={handleDueDateChange}
-              required
-            />
-          </div>
-        </form>
-    </div>
-    <button type="submit" className='create'>Create Assignment</button>
-    </>
+<>
+  <div className="assignment">
+    <h3 className="assignment-title">Create New Assignment</h3>
+    <form onSubmit={handleSubmit}>
+      <div className="input">
+        <label className="input-label">Title:</label>
+        <input
+          type="text"
+          className="input-field"
+          value={assignmentTitle}
+          onChange={handleTitleChange}
+          required
+        />
+      </div>
+      <div className="input">
+        <label className="input-label">Requirements:</label>
+        <textarea
+          className="input-field"
+          value={assignmentRequirements}
+          onChange={handleRequirementsChange}
+          required
+        />
+      </div>
+      <div className="input">
+        <label className="input-label">Due Date:</label>
+        <input
+          type="date"
+          className="input-field"
+          value={dueDate}
+          onChange={handleDueDateChange}
+          required
+        />
+      </div>
+      <button type="submit" className="create-button">Create Assignment</button>
+    </form>
+  </div>
+</>
 
   );
 };

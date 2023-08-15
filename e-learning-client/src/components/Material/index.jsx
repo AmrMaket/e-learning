@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Button, Paper } from '@mui/material';
 import axios from 'axios';
 
 const Material = () => {
@@ -40,33 +39,34 @@ const Material = () => {
   let fileInput;
 
   return (
-    <Paper elevation={0}>
-      <button onClick={toggleForm}>
-        {showForm ? 'Hide Materials' : 'Add Materials'}
-      </button>
-      {showForm && (
-        <>
-          <input
-            ref={(ref) => (fileInput = ref)}
-            type="file"
-            accept=".pdf, .doc, .docx"
-            style={{ display: 'none' }}
-            onChange={handleFileChange}
-          />
-          <button  onClick={handleButtonClick}>
-            Choose File
-          </button>
-          {selectedFile && (
-            <div>
-              <p>Selected File: {selectedFile.name}</p>
-              <button  onClick={handleUpload}>
-                Upload
-              </button>
-            </div>
-          )}
-        </>
-      )}
-    </Paper>
+    // <Paper elevation={0}>
+    //   <button onClick={toggleForm}>
+    //     {showForm ? 'Hide Materials' : 'Add Materials'}
+    //   </button>
+    //   {showForm && (
+    //     <>
+    //       <input
+    //         ref={(ref) => (fileInput = ref)}
+    //         type="file"
+    //         accept=".pdf, .doc, .docx"
+    //         style={{ display: 'none' }}
+    //         onChange={handleFileChange}
+    //       />
+    //       <button  onClick={handleButtonClick}>
+    //         Choose File
+    //       </button>
+    //       {selectedFile && (
+    //         <div>
+    //           <p>Selected File: {selectedFile.name}</p>
+    //           <button  onClick={handleUpload}>
+    //             Upload
+    //           </button>
+    //         </div>
+    //       )}
+    //     </>
+    //   )}
+    // </Paper>
+    <div>hello</div>
   );
 };
 

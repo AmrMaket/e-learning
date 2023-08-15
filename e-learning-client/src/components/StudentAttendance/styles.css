@@ -5,11 +5,11 @@
     gap: 10px;
 }
 
-h1 {
+.h1-tags {
     color: #009ed8;
 }
 
-button {
+.btnn {
     font-size: 14px;
     color: white;
     width: 100%;

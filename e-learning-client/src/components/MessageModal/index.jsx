@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./style.css";
+import "./styles.css";
 
 
 function MessageModal({ closeModal, sendMessage }) {
