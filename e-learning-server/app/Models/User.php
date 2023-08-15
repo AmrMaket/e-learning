@@ -7,9 +7,6 @@ namespace App\Models;
 use App\Models\Communication;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
-
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
@@ -51,7 +48,6 @@ class User extends Authenticatable implements JWTSubject
     ];
 
 
-=======
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
