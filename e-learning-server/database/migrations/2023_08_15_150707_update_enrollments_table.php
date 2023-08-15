@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('enrolled_students', function (Blueprint $table) {
-            $table->timestamps();
-        });
+        if (!Schema::hasColumn('enrolled_students', 'created_at') && !Schema::hasColumn('enrolled_students', 'updated_at')) {
+            Schema::table('enrolled_students', function (Blueprint $table) {
+                $table->timestamps();
+            });
+        }
     }
 
     /**
