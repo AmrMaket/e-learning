@@ -13,7 +13,7 @@ const CreateCoursePage = () => {
 
   const fetchLectures = async () => {
     try {
-      const response = await axios.get('URL_TO_YOUR_API_ENDPOINT'); // Replace with your API endpoint
+      const response = await axios.get('URL_TO_YOUR_API_ENDPOINT');
       setLectures(response.data);
     } catch (error) {
       console.error('Error fetching lectures:', error);

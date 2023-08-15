@@ -9,6 +9,8 @@ const CoursePage = () => {
   return (
     <div className="CourseContainer">
       < CourseDetail />
+      < CourseDetail />
+      < CourseDetail />
     </div>
   );
 };

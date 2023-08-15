@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Paper } from '@mui/material';
+import axios from 'axios';
 
 const Material = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -11,7 +12,20 @@ const Material = () => {
 
   const handleUpload = () => {
     if (selectedFile) {
-      console.log('Uploading file:', selectedFile);
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+  
+      axios.post('/upload-url', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((response) => {
+        console.log('File uploaded:', response.data);
+      })
+      .catch((error) => {
+        console.error('Error uploading file:', error);
+      });
     }
   };
 

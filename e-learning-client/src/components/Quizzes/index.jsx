@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './style.css';
 
 const QuizzForm = () => {
@@ -10,15 +11,24 @@ const QuizzForm = () => {
 
   const handleAddQuestion = () => {
     if (question.trim() === '' || options.some(option => option.trim() === '')) {
-        alert("You must add question with multiple choices !!")
+        alert("You must add a question with multiple choices!!");
         return;
     }
-
+  
     const newQuestion = {
       question,
       options,
       correctOptionIndex
     };
+  
+    axios.post('URL', newQuestion)
+      .then(response => {
+        console.log('Question added:', response.data);
+      })
+      .catch(error => {
+        console.error('Error adding question:', error);
+      });
+  
     setQuestions([...questions, newQuestion]);
     setQuestion('');
     setOptions(['', '', '', '']);
