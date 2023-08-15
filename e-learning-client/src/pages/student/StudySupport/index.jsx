@@ -55,5 +55,4 @@ const StudySupport = () => {
         </div>
     );
 }
- 
 export default StudySupport;

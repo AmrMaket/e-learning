@@ -1,4 +1,5 @@
-/* .link-button{
+.link-button{
+
     border-left: 3px solid rgb(214, 214, 214);
     text-decoration: none;
 }
@@ -19,4 +20,6 @@
 .image-container{
     height: 4rem;
     padding-right: 0.5rem;
-} */
+
+} 
+
