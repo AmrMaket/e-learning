@@ -18,7 +18,6 @@ return new class extends Migration
             $table->date('finished_at');
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('user_id');
-
         });
     }
 

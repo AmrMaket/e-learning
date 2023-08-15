@@ -1,0 +1,29 @@
+.lecture {
+    width: 80%;
+    color: white;
+    background-color: #009ed8;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+}
+
+.containlecture {
+    border: 1px solid #009ed8;
+    height: auto;
+    width: 200%;
+    color: white;
+    background-color: #009ed8;
+}
+ 
+/* button{
+    height: 70px;
+    width: 200px;
+    margin-bottom: 15px;
+} */
+
+.post{
+    margin-top: 15px;
+    height: 50px;
+    width: 100px;
+}
