@@ -28,4 +28,4 @@ Route::get('/get_assignments/{user_id}', [StudentController::class, "getAssignme
 Route::get('/get_assignments', [StudentController::class, "getAssignmentsAndCorrected"]);
 Route::get('/get_quizzes/{user_id}', [StudentController::class, "getQuizzesAndCorrected"]);
 Route::get('/get_quizzes', [StudentController::class, "getQuizzesAndCorrected"]);
-
+Route::get('/calendly', [StudentController::class, "getTeacherCalendly"]);

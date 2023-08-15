@@ -8,6 +8,7 @@ use App\Models\BlogPost;
 use App\Models\Collaboration;
 use App\Models\EnrolledStudent;
 use App\Models\Quiz;
+use App\Models\User;
 use App\Models\Assignment;
 use App\Models\StudentAssignment;
 use App\Models\StudentQuiz;
@@ -24,6 +25,7 @@ class StudentController extends Controller
         foreach ($courses as $course) {
             $remainingCapacity = $course->capacity - $course->enrolledStudents->count();
             $coursesInfo[] = [
+                'course_id' => $course->id,
                 'name' => $course->name,
                 'capacity' => $course->capacity,
                 'remaining_capacity' => $remainingCapacity,
@@ -66,6 +68,7 @@ class StudentController extends Controller
         $blogPosts = BlogPost::with('student')->get();
         foreach ($blogPosts as $blogPost) {
             $blogInfo[] = [
+                'blog_id' => $blogPost->id,
                 'title' => $blogPost->title,
                 'content' => $blogPost->content,
                 'student_name' => $blogPost->student->name,
@@ -74,6 +77,7 @@ class StudentController extends Controller
         $collaborations = Collaboration::where('type', 'game')->get();
         foreach ($collaborations as $collaboration) {
             $gameCollaborationsInfo[] = [
+                'game_id' => $collaboration->id,
                 'name' => $collaboration->name,
                 'link' => $collaboration->link,
             ];
@@ -126,6 +130,25 @@ class StudentController extends Controller
         return response()->json([
             'all_quizzes' => $quizzes,
             'corrected_quizzes' => $corrected_quizzes
+        ]);
+    }
+
+    public function getTeacherCalendly()
+    {
+        // $user = Auth::user();
+        $teacherCalendlys = Course::all();
+        foreach ($teacherCalendlys as $teacherCalendly) {
+            $teacher_id = $teacherCalendly->teacher_id;
+            $teacher = User::find($teacher_id);
+            $teacherInfo[] = [
+                'teacher_id' => $teacher_id,
+                'teacher_name' => $teacher->name,
+                'teacher_calendly' => $teacherCalendly->calendly,
+            ];
+        }
+
+        return response()->json([
+            'teachers' => $teacherInfo
         ]);
     }
 }
