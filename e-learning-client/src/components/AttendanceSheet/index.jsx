@@ -1,9 +1,9 @@
-import React, { useState , useEffect } from "react";
-import "./style.css";
+import React, { useState , useEffect} from "react";
+import '../AttendanceSheet/style.css';
 
-const AttendanceSheetModal = ({ students, isOpen, onClose }) => {
+const AttendanceSheet = ({ students, isOpen, onClose }) => {
   const [attendance, setAttendance] = useState([]);
-  
+
   useEffect(() => {
     if (students) {
       setAttendance(
@@ -11,6 +11,7 @@ const AttendanceSheetModal = ({ students, isOpen, onClose }) => {
           id: student.id,
           name: student.name,
           present: false,
+          isEditing: false, 
         }))
       );
     }
@@ -21,6 +22,16 @@ const AttendanceSheetModal = ({ students, isOpen, onClose }) => {
       prevAttendance.map((student) =>
         student.id === studentId
           ? { ...student, present: !student.present }
+          : student
+      )
+    );
+  };
+
+  const handleEditToggle = (studentId) => {
+    setAttendance((prevAttendance) =>
+      prevAttendance.map((student) =>
+        student.id === studentId
+          ? { ...student, isEditing: !student.isEditing }
           : student
       )
     );
@@ -41,9 +52,10 @@ const AttendanceSheetModal = ({ students, isOpen, onClose }) => {
         <h2>Attendance Sheet</h2>
         <table>
           <thead>
-            <tr className="">
+            <tr>
               <th>Student Name</th>
               <th>Present</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -51,11 +63,20 @@ const AttendanceSheetModal = ({ students, isOpen, onClose }) => {
               <tr key={student.id}>
                 <td>{student.name}</td>
                 <td>
-                  <input
-                    type="checkbox"
-                    checked={student.present}
-                    onChange={() => handleCheckboxChange(student.id)}
-                  />
+                  {student.isEditing ? (
+                    <input
+                      type="checkbox"
+                      checked={student.present}
+                      onChange={() => handleCheckboxChange(student.id)}
+                    />
+                  ) : (
+                    student.present ? "Present" : "Absent"
+                  )}
+                </td>
+                <td>
+                  <button onClick={() => handleEditToggle(student.id)}>
+                    {student.isEditing ? "Save" : "Edit"}
+                  </button>
                 </td>
               </tr>
             ))}
@@ -67,4 +88,4 @@ const AttendanceSheetModal = ({ students, isOpen, onClose }) => {
   );
 };
 
-export default AttendanceSheetModal;
+export default AttendanceSheet;

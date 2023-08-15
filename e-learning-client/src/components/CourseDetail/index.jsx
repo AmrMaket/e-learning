@@ -1,38 +1,36 @@
-import React , {useState} from 'react';
+import React, { useState } from 'react';
+import './style.css';
+import Material from '../Material/index';
+import AssignmentPackage from '../AssignmentsPackage/index';
 import QuizzForm from '../Quizzes/index';
 import LectureForm from '../LecturesOnToggle/index';
-import Material from '../Material/index';
 import InteractiveContent from '../InteractiveContent/index';
-import AssignmentPackage from '../AssignmentsPackage/index';
-import './style.css';
 
-const CourseDetail = ({  }) => {
-
+const CourseDetail = () => {
   const [courseTitle, setCourseTitle] = useState('UI/UX');
-  const [showForm, setShowForm] = useState(false);
+  const [showComponents, setShowComponents] = useState(false);
 
-
-  const toggleForm = () => {
-    setShowForm(!showForm);
+  const toggleShowComponents = () => {
+    setShowComponents(!showComponents);
   };
 
   return (
     <div>
       <div className='containerAll'>
-      <h1>{courseTitle}</h1>
-      <button className="openCourse" onClick={toggleForm}>
-        {showForm ? 'Close Course' : 'Open Course'}
-      </button>
-      {showForm && (
-        <>
-          <Material />
-          <AssignmentPackage />
-          <QuizzForm />
-          <LectureForm  />
-          <InteractiveContent />
+        <h1>{courseTitle}</h1>
+        <button className="openCourse" onClick={toggleShowComponents}>
+          {showComponents ? 'Close Course' : 'Open Course'}
+        </button>
+        {showComponents && (
+          <>
+            <Material />
+            <AssignmentPackage />
+            <QuizzForm />
+            <LectureForm />
+            <InteractiveContent />
           </>
         )}
-      </div> 
+      </div>
     </div>
   );
 };
