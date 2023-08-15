@@ -9,12 +9,18 @@ class Collaboration extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
 
+    public $timestamps = false;
     protected $fillable = [
         'name',
         'link',
         'type',
         'course_id'
     ];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id');
+    }
+
 }

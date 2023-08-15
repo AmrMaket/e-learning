@@ -9,6 +9,7 @@ class Quiz extends Model
 {
     use HasFactory;
 
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -18,5 +19,11 @@ class Quiz extends Model
         'course_id',
     ];
 
+
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 
 }
