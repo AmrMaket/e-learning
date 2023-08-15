@@ -29,3 +29,4 @@ Route::post('add-or-update-attendance/{id?}',[PostController::class,'addOrUpdate
 Route::post('add-or-update-collaboration/{id?}',[PostController::class,'addOrUpdateCollaboration']);
 Route::post('add-or-update-material/{id?}',[PostController::class,'addOrUpdateMaterial']);
 Route::post('add-or-update-project/{id?}',[PostController::class,'addOrUpdateProject']);
+Route::post('messages' , [ChatController::class , "message"]);
