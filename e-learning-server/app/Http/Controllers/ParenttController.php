@@ -259,11 +259,9 @@ class ParenttController extends Controller
         }
     }
 
-    public function getQuizzes(Request $request) {
+    public function getQuizzes() {
 
-        // $parentId = Auth::user();
-        // $parentId = 2;
-        $parentId = $request->get('parent_id');
+        $parentId = Auth::id();
         try{
         $quizNotifyResults = DB::table('users')
         -> join('student_quizzes', 'users.child_id', '=', 'student_quizzes.student_id')
@@ -289,11 +287,9 @@ class ParenttController extends Controller
         }
     }
 
-    public function getAssignments(Request $request) {
+    public function getAssignments() {
 
-        // $parentId = Auth::user();
-        // $parentId = 2;
-        $parentId = $request->get('parent_id');
+        $parentId = Auth::id();
         try{
         $assignmentNotifyResults = DB::table('users')
         -> join('student_assignments', 'users.child_id', '=', 'student_assignments.student_id')
