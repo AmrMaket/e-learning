@@ -1,73 +1,64 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './style.css';
 
-const Material = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [showForm, setShowForm] = useState(false);
+function FolderUpload() {
+  const [selectedFiles, setSelectedFiles] = useState([]);
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    setSelectedFiles([...event.target.files]);
   };
 
   const handleUpload = () => {
-    if (selectedFile) {
-      const formData = new FormData();
-      formData.append('file', selectedFile);
-  
-      axios.post('/upload-url', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
-      .then((response) => {
-        console.log('File uploaded:', response.data);
-      })
-      .catch((error) => {
-        console.error('Error uploading file:', error);
-      });
+    const formData = new FormData();
+
+    for (const file of selectedFiles) {
+      formData.append('files[]', file);
     }
-  };
 
-  const toggleForm = () => {
-    setShowForm(!showForm);
+    axios.post('http://127.0.0.1:8000/api/postMaterial', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    .then((response) => {
+      console.log('Files uploaded:', response.data);
+      setSelectedFiles([]); // Clear selected files
+    })
+    .catch((error) => {
+      console.error('Error uploading files:', error);
+    });
   };
-
-  const handleButtonClick = () => {
-    fileInput.click();
-  };
-
-  let fileInput;
 
   return (
-    // <Paper elevation={0}>
-    //   <button onClick={toggleForm}>
-    //     {showForm ? 'Hide Materials' : 'Add Materials'}
-    //   </button>
-    //   {showForm && (
-    //     <>
-    //       <input
-    //         ref={(ref) => (fileInput = ref)}
-    //         type="file"
-    //         accept=".pdf, .doc, .docx"
-    //         style={{ display: 'none' }}
-    //         onChange={handleFileChange}
-    //       />
-    //       <button  onClick={handleButtonClick}>
-    //         Choose File
-    //       </button>
-    //       {selectedFile && (
-    //         <div>
-    //           <p>Selected File: {selectedFile.name}</p>
-    //           <button  onClick={handleUpload}>
-    //             Upload
-    //           </button>
-    //         </div>
-    //       )}
-    //     </>
-    //   )}
-    // </Paper>
-    <div>hello</div>
+    <div className='container'>
+      <h4>Upload Folder</h4>
+      <input
+        type="file"
+        multiple
+        accept=".pdf,.doc,.docx"
+        onChange={handleFileChange}
+      />
+      <button className='upload' onClick={handleUpload}>Upload Files</button>
+    </div>
   );
-};
+}
 
-export default Material;
+function FolderUploadToggle() {
+  const [showUpload, setShowUpload] = useState(false);
+
+  const toggleUpload = () => {
+    setShowUpload(!showUpload);
+  };
+
+  return (
+    <div className='container'>
+      <button className='toggleButton' onClick={toggleUpload}>
+        {showUpload ? 'Hide Material' : 'Show Material'}
+      </button>
+      {showUpload && <FolderUpload />}
+    </div>
+  );
+}
+
+export default FolderUploadToggle;

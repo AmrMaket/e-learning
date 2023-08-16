@@ -1,4 +1,5 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios'; // Import Axios
 import './attendancesheet.css';
 
 const AttendanceSheet = ({ students, isOpen, onClose }) => {
@@ -11,7 +12,7 @@ const AttendanceSheet = ({ students, isOpen, onClose }) => {
           id: student.id,
           name: student.name,
           present: false,
-          isEditing: false, 
+          isEditing: false,
         }))
       );
     }
@@ -38,8 +39,15 @@ const AttendanceSheet = ({ students, isOpen, onClose }) => {
   };
 
   const handleSubmit = () => {
-    console.log(attendance);
-    onClose();
+    // Use Axios to send attendance data to the server
+    axios.post('http://127.0.0.1:8000/api/record-attendance', attendance)
+      .then((response) => {
+        console.log('Attendance submitted:', response.data);
+        onClose();
+      })
+      .catch((error) => {
+        console.error('Error submitting attendance:', error);
+      });
   };
 
   if (!isOpen) {

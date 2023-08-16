@@ -124,18 +124,54 @@ class PostController extends Controller
     
         return response()->json(["message" => "Collaboration added/updated successfully", "collaboration" => $collaboration]);
     }
-    public function addOrUpdateMaterial(Request $request, $id = "add") {
-        if ($id == "add") {
-            $material = new Material;
-        } else {
-            $material = Material::find($id);
-        }
     
-        $material->title = $request->title ? $request->title : $material->title;
-        $material->uploaded_files = $request->uploaded_files ? $request->uploaded_files : $material->uploaded_files;
-        $material->course_id = $request->course_id ? $request->course_id : $material->course_id;
-        $material->save();
-    
-        return response()->json(["message" => "Material added/updated successfully", "material" => $material]);
+    public function postMaterial(Request $request)
+    {
+    $destinationPath = "public/materials/";
+
+    if ($request->hasFile('uploaded_files')) {
+        $file = $request->file('uploaded_files');
+        $timestamp = now()->format('Ymd_His');
+        $fileExtension = $file->getClientOriginalExtension();
+        $fileName = $timestamp . '_' . uniqid() . '.' . $fileExtension;
+        
+        $path = $file->storeAs($destinationPath, $fileName);
+
+        $newMaterial = new Material;
+        $newMaterial->title=$request->title;
+        $newMaterial->uploaded_files=$request->uploaded_files;
+        $newMaterial->course_id=$request->course_id;        
+        $newMaterial->save();
+
+        return response()->json(['message' => 'Material created successfully']);
     }
+
+    return response()->json(['message' => 'File not found or upload failed'], 400);
+    }
+
+    public function recordAttendance(Request $request)
+    {
+        $request->validate([
+            'course_id' => 'required|exists:courses,id',
+            'student_id' => 'required|exists:users,id',
+            'status' => 'required|boolean',
+        ]);
+
+        $course = Course::findOrFail($request->course_id);
+        $student = User::findOrFail($request->student_id);
+
+        $attendance = new Attendance([
+            'course_id' => $course->id,
+            'student_id' => $student->id,
+            'status' => $request->status,
+        ]);
+        $attendance->save();
+
+        return response()->json([
+            'message' => 'Attendance recorded successfully',
+            'attendance' => $attendance
+        ], 201);
+    }
+
 }
+

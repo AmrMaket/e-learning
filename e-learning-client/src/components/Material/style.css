@@ -1,0 +1,18 @@
+
+h4{
+    color: #009ed8;
+}
+
+.upload{
+    height: 60px;
+    width: 80%;
+    margin-bottom: 15px;
+    background-color: #009ed8; 
+}
+
+.toggleButton {
+    width: 40%;
+    height: 60px;
+    color:white;
+    background-color: #009ed8;
+}

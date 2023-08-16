@@ -30,12 +30,11 @@ const CreateCoursePage = () => {
 
   return (
     <div className="create-course-page">
-      <button onClick={toggleLectureForm}>Add Lecture</button>
+      <button className='toggleBottom' onClick={toggleLectureForm}>Add Lecture</button>
       {isLectureFormVisible && (
         <LectureForm courseId={123} onAddLecture={handleAddLecture} />
       )}
 
-      <h2>Lectures</h2>
       <ul>
         {lectures.map((lecture) => (
           <li key={lecture.id}>{lecture.title}</li>

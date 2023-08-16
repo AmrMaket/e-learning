@@ -7,6 +7,7 @@ import CollaborationTools from "./pages/teacher/CollaborationTools";
 import Communication from "./pages/teacher/Communication";
 import CourseCreation from "./pages/teacher/CourseCreation";
 import GradingAndFeedback from "./pages/teacher/GradingAndFeedback";
+import CoursePage1 from "./components/coursepage/index";
 
 //Parent-related imports
 import ParentNavbar from "./components/ParentNavbar";
@@ -27,20 +28,22 @@ import StudySupport from "./pages/student/StudySupport";
 import Login from "./pages/Login";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CoursePage from "./pages/teacher/CourseCreation";
 
 function AppRouter() {
-  const [authenticated, setauthenticated] = useState(null);
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("authenticated");
-    if (loggedInUser) {
-      setauthenticated(loggedInUser);
-    }
-  }, []);
-  if (!authenticated) {
-    return <Login />;
-  } else {
-    const role_id = parseInt(localStorage.getItem("role_id"));
-    console.log(role_id)
+  // const [authenticated, setauthenticated] = useState(null);
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("authenticated");
+  //   if (loggedInUser) {
+  //     setauthenticated(loggedInUser);
+  //   }
+  // }, []);
+  // if (!authenticated) {
+  //   return <Login />;
+  // } else {
+  //   const role_id = parseInt(localStorage.getItem("role_id"));
+  //   console.log(role_id)
+  const role_id = 2;
     return (
       <Router>
         <div className="App">
@@ -66,6 +69,10 @@ function AppRouter() {
                     path="/collaborationTools"
                     element={<CollaborationTools />}
                   />
+                  <Route
+                    path="/course"
+                    element={<CoursePage1 />}
+                    />
                 </>
               )}
 
@@ -115,6 +122,6 @@ function AppRouter() {
       </Router>
     );
   }
-}
+
 
 export default AppRouter;

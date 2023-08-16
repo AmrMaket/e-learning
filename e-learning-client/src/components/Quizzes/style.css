@@ -8,3 +8,10 @@
     color: white;
     width: 70%;
 }
+.toggleBottom {
+    background-color: #009ed8;
+    color: white;
+    width: 120px;
+    height: 60px;
+    margin-bottom: 20px;
+}

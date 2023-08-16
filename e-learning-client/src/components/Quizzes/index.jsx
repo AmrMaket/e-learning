@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './style.css';
+import '../Quizzes/style.css';
 
 const QuizzForm = () => {
   const [questions, setQuestions] = useState([]);
@@ -41,7 +41,7 @@ const QuizzForm = () => {
 
   return (
     <div className="contquizz">
-      <button onClick={toggleForm}>
+      <button className='toggleBottom' onClick={toggleForm}>
         {showForm ? 'Hide Quizzes' : 'Add Quiz'}
       </button>
       {showForm && (

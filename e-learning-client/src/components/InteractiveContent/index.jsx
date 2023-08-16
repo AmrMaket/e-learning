@@ -7,19 +7,19 @@ const InteractiveContent = () => {
     setShowGameLink(!showGameLink);
   };
 
-  const openMemoryGame = () => {
+  const openFroggyGame = () => {
     window.open("https://flexboxfroggy.com", "_blank");
   };
 
   return (
     <div>
-      <button onClick={toggleGameLink}>
+      <button className='toggleBottom' onClick={toggleGameLink}>
         {showGameLink ? 'Hide Game' : 'Show Game'}
       </button>
       {showGameLink && (
         <div>
           <p>Click the link below to play the game:</p>
-          <button onClick={openMemoryGame}>
+          <button onClick={openFroggyGame}>
             Play Memory Game
           </button>
         </div>
