@@ -1,0 +1,15 @@
+.circle-icon {
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; 
+    color: #009ed8;
+    font-size: 75px;
+    cursor: pointer;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out; 
+  }
+  
+  .circle.open {
+    transform: rotate(0deg); 
+  }
+  

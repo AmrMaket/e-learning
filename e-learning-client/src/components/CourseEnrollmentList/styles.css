@@ -1,0 +1,22 @@
+.course-preview{
+    border: 1px solid #009ed8;
+    border-radius: 5px;
+}
+
+.course-preview:hover{
+    background-color: #009ed8;
+    color: #ffffff;
+    transition: 0.5s;
+}
+
+.enrolled-course-card-button{
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: #ff66c4;
+}
+
+.disabled-button{
+    cursor: none;
+    background-color: #dbd2d8;
+}
