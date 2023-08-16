@@ -31,19 +31,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CoursePage from "./pages/teacher/CourseCreation";
 
 function AppRouter() {
-  // const [authenticated, setauthenticated] = useState(null);
-  // useEffect(() => {
-  //   const loggedInUser = localStorage.getItem("authenticated");
-  //   if (loggedInUser) {
-  //     setauthenticated(loggedInUser);
-  //   }
-  // }, []);
-  // if (!authenticated) {
-  //   return <Login />;
-  // } else {
-  //   const role_id = parseInt(localStorage.getItem("role_id"));
-  //   console.log(role_id)
-  const role_id = 2;
+  const [authenticated, setauthenticated] = useState(null);
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("authenticated");
+    if (loggedInUser) {
+      setauthenticated(loggedInUser);
+    }
+  }, []);
+  if (!authenticated) {
+    return <Login />;
+  } else {
+    const role_id = parseInt(localStorage.getItem("role_id"));
+    console.log(role_id)
     return (
       <Router>
         <div className="App">
@@ -122,6 +121,6 @@ function AppRouter() {
       </Router>
     );
   }
-
+}
 
 export default AppRouter;
