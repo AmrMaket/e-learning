@@ -77,12 +77,12 @@ class ParenttController extends Controller
         return response()->json('',200);
     }
 
-    public function getChildProgress(Request $request)
+    public function getChildProgress()
     {
         try{
-        // $parentId = Auth::user();
+        $parentId = Auth::id();
         // $parentId = 2;
-        $parentId = $request->get('parent_id');
+        // $parentId = $request->get('parent_id');
 
         $coursesResults = DB::table('users')
         -> join('enrolled_students', 'users.child_id', '=', 'enrolled_students.user_id')
@@ -235,7 +235,7 @@ class ParenttController extends Controller
         try{
         $attendanceResults = DB::table('users')
         -> join('attendances', 'users.child_id', '=', 'attendances.student_id')
-        -> join('lectures', 'attendances.lecture_id', '=', 'lectures.id')
+        -> join('lectures', 'attendances._id', '=', 'lectures.id')
         -> join('courses', 'lectures.course_id', '=', 'courses.id')
         -> where('users.id', $parentId)
         -> select(
@@ -259,11 +259,9 @@ class ParenttController extends Controller
         }
     }
 
-    public function getQuizzes(Request $request) {
+    public function getQuizzes() {
 
-        // $parentId = Auth::user();
-        // $parentId = 2;
-        $parentId = $request->get('parent_id');
+        $parentId = Auth::id();
         try{
         $quizNotifyResults = DB::table('users')
         -> join('student_quizzes', 'users.child_id', '=', 'student_quizzes.student_id')
@@ -289,11 +287,9 @@ class ParenttController extends Controller
         }
     }
 
-    public function getAssignments(Request $request) {
+    public function getAssignments() {
 
-        // $parentId = Auth::user();
-        // $parentId = 2;
-        $parentId = $request->get('parent_id');
+        $parentId = Auth::id();
         try{
         $assignmentNotifyResults = DB::table('users')
         -> join('student_assignments', 'users.child_id', '=', 'student_assignments.student_id')
@@ -319,11 +315,9 @@ class ParenttController extends Controller
         }
     }
 
-    public function getTeacherInfo(Request $request) {
+    public function getTeacherInfo() {
 
-        // $parentId = Auth::user();
-        // $parentId = 2;
-        $parentId = $request->get('parent_id');
+        $parentId = Auth::id();
         $childId = User::where('id', $parentId)->pluck('child_id')->first();
 
         try{

@@ -3,7 +3,7 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "./styles.css";
 
 function SingleCard({ item }) {
-  const overallRatio = (item.assignmentPercentage + item.quizPercentage) / 2;
+  const overallRatio = (item.avg_assignment_grade + item.avg_quiz_grade) / 2;
   const circleSize = 60;
 
   const progressBarStyles = {
@@ -14,15 +14,7 @@ function SingleCard({ item }) {
   return (
     <div className="card">
       <div className="header">
-        <h2>{item.courseName}</h2>
-        <p>
-          <strong>Teacher: </strong>
-          {item.teacherName}
-        </p>
-        <p>
-          <strong>Student: </strong>
-          {item.studentName}
-        </p>
+        <h2>{item.course_name}</h2>
       </div>
       <div className="progress-section">
         <div className="progress-bar" style={progressBarStyles}>
@@ -40,12 +32,10 @@ function SingleCard({ item }) {
         </div>
         <div className="progress-bar" style={progressBarStyles}>
           <CircularProgressbar
-            value={item.assignmentPercentage}
-            text={`${item.assignmentPercentage}%`}
+            value={item.avg_assignment_grade}
+            text={`${item.avg_assignment_grade}%`}
             styles={buildStyles({
-              pathColor: `rgba(62, 152, 199, ${
-                item.assignmentPercentage / 100
-              })`,
+              pathColor: `rgba(62, 152, 199, ${item.avg_assignment_grade / 100})`,
               width: `${circleSize}px`,
               height: `${circleSize}px`,
               textSize: "12px",
@@ -55,10 +45,10 @@ function SingleCard({ item }) {
         </div>
         <div className="progress-bar" style={progressBarStyles}>
           <CircularProgressbar
-            value={item.quizPercentage}
-            text={`${item.quizPercentage}%`}
+            value={item.avg_quiz_grade}
+            text={`${item.avg_quiz_grade}%`}
             styles={buildStyles({
-              pathColor: `rgba(62, 152, 199, ${item.quizPercentage / 100})`,
+              pathColor: `rgba(62, 152, 199, ${item.avg_quiz_grade / 100})`,
               width: `${circleSize}px`,
               height: `${circleSize}px`,
               textSize: "12px",
