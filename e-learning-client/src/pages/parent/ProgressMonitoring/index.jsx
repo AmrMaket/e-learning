@@ -1,92 +1,54 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import SingleCard from "../../../components/SingleCard";
-import axios from "axios";
 
 function ProgressMonitoring() {
-  let dummy_data = [
-    {
-      id: 1,
-      studentName: "Hadi",
-      courses: [
-        {
-          id: 1,
-          courseName: "UIX",
-          teacherName: "Julien",
-          assignmentPercentage: 75,
-          quizPercentage: 60,
-        },
-        {
-          id: 2,
-          courseName: "Soft",
-          teacherName: "George",
-          assignmentPercentage: 90,
-          quizPercentage: 80,
-        },
-      ],
-    },
-    {
-      id: 1,
-      studentName: "M7md",
-      courses: [
-        {
-          id: 1,
-          courseName: "UIX",
-          teacherName: "Julien",
-          assignmentPercentage: 75,
-          quizPercentage: 60,
-        },
-        {
-          id: 2,
-          courseName: "Soft",
-          teacherName: "George",
-          assignmentPercentage: 90,
-          quizPercentage: 80,
-        },
-        {
-          id: 2,
-          courseName: "Soft",
-          teacherName: "George",
-          assignmentPercentage: 90,
-          quizPercentage: 80,
-        },
-      ],
-    },
-  ];
-
+  
   const [studentData, setStudentData] = useState([]);
 
+  const fetchInfo = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + localStorage.getItem('token'));
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/child_progress", requestOptions);
+      const result = await response.json();
+      if (result.status === 'success') {
+        setStudentData(result.results);
+        console.log(result)
+      } else {
+        console.error('API request failed:', result);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
   useEffect(() => {
-    axios
-      .get("l api hon")
-      .then((response) => {
-        setStudentData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    fetchInfo();
   }, []);
 
   return (
-    //api badde baddel l dummy b data: 1)student name 2)course info
     <div className="progress-monitoring-page">
       <div className="course-cards">
-        {dummy_data.map((student) => (
-          <div key={student.id} className="student-card">
-            <h2>{student.studentName}</h2>
+        {studentData.map((course) => (
+          <div key={course.course_name} className="student-card">
+            <h2>{course.course_name}</h2>
             <div className="course-list">
-              {student.courses.map((course) => (
-                <SingleCard
-                  key={course.id}
-                  item={{
-                    courseName: course.courseName,
-                    teacherName: course.teacherName,
-                    studentName: student.studentName,
-                    assignmentPercentage: course.assignmentPercentage,
-                    quizPercentage: course.quizPercentage,
-                  }}
-                />
-              ))}
+              <SingleCard
+                key={course.course_name}
+                item={{
+                  courseName: course.course_name,
+                  avg_assignment_grade: course.avg_assignment_grade,
+                  avg_quiz_grade: course.avg_quiz_grade,
+                  quiz_grade_overall: course.quiz_grade_overall,
+                }}
+              />
             </div>
           </div>
         ))}
@@ -94,4 +56,5 @@ function ProgressMonitoring() {
     </div>
   );
 }
+
 export default ProgressMonitoring;

@@ -77,12 +77,12 @@ class ParenttController extends Controller
         return response()->json('',200);
     }
 
-    public function getChildProgress(Request $request)
+    public function getChildProgress()
     {
         try{
-        // $parentId = Auth::user();
+        $parentId = Auth::id();
         // $parentId = 2;
-        $parentId = $request->get('parent_id');
+        // $parentId = $request->get('parent_id');
 
         $coursesResults = DB::table('users')
         -> join('enrolled_students', 'users.child_id', '=', 'enrolled_students.user_id')
