@@ -21,7 +21,7 @@ function SingleChat({ item }) {
 
   return (
     <div className="person-item">
-      <span className="person-name">{item.name}</span>
+      <span className="person-name">{item.teacher_name}</span>
       <div className="chat-link" onClick={openModal}>
         <span className="chat-icon">&#128231;</span>
       </div>
