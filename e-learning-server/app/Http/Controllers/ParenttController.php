@@ -191,29 +191,22 @@ class ParenttController extends Controller
     }
 
     public function sendMessage(Request $request) {
-        
-        // $parentId = Auth::user();
-        // $parentId = 2;
-        $parentId = $request->get('sender_id');
-        $teacherId = $request->input('recipient_id');
-        $message = $request->input('message');
-     
-        $data = [
-            'message' => $message,
-            'sender_id' => $parentId,
-            'recipient_id' => $teacherId,
-        ];
+        try {
+            $parentId = Auth::id();
+            $teacherId = $request->input('teacher_id');
+            $message = $request->input('message');
+            $data = [
+                'message' => $message,
+                'sender_id' => $parentId,
+                'recipient_id' => $teacherId,
+            ];
     
-        DB::table('communications')->insert($data);
-
-        // $communication = new Communication([
-        //     'message'=> $message,
-        //     'sender_id'=> $parentId,
-        //     'recipient_id'=> $teacherId,
-        // ]);
-        // $communication->save();
-        return response()->json(['message' => 'Communication saved successfully'], 200);
+            DB::table('communications')->insert($data);
     
+            return response()->json(['message' => 'Communication saved successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'An error occurred while sending the message']);
+        }
     }
 
     public function getMessage(Request $request) {
