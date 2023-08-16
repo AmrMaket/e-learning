@@ -235,7 +235,7 @@ class ParenttController extends Controller
         try{
         $attendanceResults = DB::table('users')
         -> join('attendances', 'users.child_id', '=', 'attendances.student_id')
-        -> join('lectures', 'attendances.lecture_id', '=', 'lectures.id')
+        -> join('lectures', 'attendances._id', '=', 'lectures.id')
         -> join('courses', 'lectures.course_id', '=', 'courses.id')
         -> where('users.id', $parentId)
         -> select(
@@ -319,11 +319,9 @@ class ParenttController extends Controller
         }
     }
 
-    public function getTeacherInfo(Request $request) {
+    public function getTeacherInfo() {
 
-        // $parentId = Auth::user();
-        // $parentId = 2;
-        $parentId = $request->get('parent_id');
+        $parentId = Auth::id();
         $childId = User::where('id', $parentId)->pluck('child_id')->first();
 
         try{
