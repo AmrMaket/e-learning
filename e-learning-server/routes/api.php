@@ -52,14 +52,16 @@ Route::post('add-or-update-material/{id?}',[PostController::class,'addOrUpdateMa
 Route::post('add-or-update-project/{id?}',[PostController::class,'addOrUpdateProject']);
 Route::post('messages' , [ChatController::class , "message"]);
 
-Route::get('/courses_available', [StudentController::class, "getCoursesInformation"]);
-Route::post('/student_enrollment', [StudentController::class, "enrollCourse"]);
-Route::get('/blogs_games', [StudentController::class, "getBlogAndCollaborations"]);
-Route::post('/create_blog', [StudentController::class, "createBlog"]);
-Route::get('/get_assignments/{user_id}', [StudentController::class, "getAssignmentsAndCorrected"]);
-Route::get('/get_assignments', [StudentController::class, "getAssignmentsAndCorrected"]);
-Route::get('/get_quizzes/{user_id}', [StudentController::class, "getQuizzesAndCorrected"]);
-Route::get('/get_quizzes', [StudentController::class, "getQuizzesAndCorrected"]);
-Route::get('/calendly', [StudentController::class, "getTeacherCalendly"]);
+Route::group(['prefix' => 'student'], function () {
+    Route::get('/courses_available', [StudentController::class, "getCoursesInformation"]);
+    Route::post('/student_enrollment', [StudentController::class, "enrollCourse"]);
+    Route::get('/blogs_games', [StudentController::class, "getBlogAndCollaborations"]);
+    Route::post('/create_blog', [StudentController::class, "createBlog"]);
+    Route::get('/get_assignments/{user_id}', [StudentController::class, "getAssignmentsAndCorrected"]);
+    Route::get('/get_assignments', [StudentController::class, "getAssignmentsAndCorrected"]);
+    Route::get('/get_quizzes/{user_id}', [StudentController::class, "getQuizzesAndCorrected"]);
+    Route::get('/get_quizzes', [StudentController::class, "getQuizzesAndCorrected"]);
+    Route::get('/calendly', [StudentController::class, "getTeacherCalendly"]);
+});
 
 
