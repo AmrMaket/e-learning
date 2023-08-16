@@ -1,22 +1,40 @@
 import React, { useState } from "react";
-
 import "./styles.css";
 
-
-function MessageModal({ closeModal, sendMessage }) {
+function MessageModal({ closeModal }) {
   const [message, setMessage] = useState("");
 
   const handleInputChange = (event) => {
     setMessage(event.target.value);
   };
 
-  const handleSendClick = () => {
-
+  const handleSendClick = async () => {
     if (message.trim() !== "") {
-      sendMessage(message);
-      closeModal();
+      try {
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
+
+        const requestOptions = {
+          method: "POST",
+          headers: myHeaders,
+          body: JSON.stringify({ message }),
+          redirect: "follow",
+        };
+
+        const response = await fetch("http://your-backend-api-url/send-message", requestOptions);
+        const result = await response.json();
+
+        if (result.status === "success") {
+          closeModal();
+        } else {
+          console.log("Message sending failed.");
+        }
+      } catch (error) {
+        console.error("Error sending message:", error);
+      }
     } else {
-      alert("Please enter a message before sending.");
+      console.log("Please enter a message before sending.");
     }
   };
 
