@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AssignmentForm from '../Assignments/index';
+import '../AssignmentsPackage/style.css';
 
 const AssignmentPackage = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -14,7 +15,7 @@ const AssignmentPackage = () => {
 
   return (
     <div>
-      <button onClick={toggleForm}>
+      <button className='toggleButton' onClick={toggleForm}>
         {isFormVisible ? 'Hide Assignment Form' : 'Show Assignment Form'}
       </button>
       {isFormVisible && (

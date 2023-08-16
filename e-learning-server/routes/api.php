@@ -48,9 +48,11 @@ Route::post('add-or-update-lectures/{id?}',[PostController::class,'addOrUpdateLe
 Route::post('add-or-update-communication/{id?}',[PostController::class,'addOrUpdateCommunication']);
 Route::post('add-or-update-attendance/{id?}',[PostController::class,'addOrUpdateAttendance']);
 Route::post('add-or-update-collaboration/{id?}',[PostController::class,'addOrUpdateCollaboration']);
+Route::post('record-attendance', [TeacherController::class, 'recordAttendance']);
 Route::post('add-or-update-material/{id?}',[PostController::class,'addOrUpdateMaterial']);
 Route::post('add-or-update-project/{id?}',[PostController::class,'addOrUpdateProject']);
 Route::post('messages' , [ChatController::class , "message"]);
+Route::post('material', [PostController::class , 'postMaterial']);
 
 Route::group(['prefix' => 'student'], function () {
     Route::get('/courses_available', [StudentController::class, "getCoursesInformation"]);
