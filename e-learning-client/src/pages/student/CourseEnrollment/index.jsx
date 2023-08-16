@@ -41,7 +41,7 @@ const CourseEnrollment = () => {
     };
 
     if(loading){
-        return <p>Please wait while we gather your contacts</p>;
+        return <p>Please wait while we gather your courses</p>;
     }
 
     return (

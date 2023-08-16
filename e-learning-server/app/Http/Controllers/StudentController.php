@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Course;
-use App\Models\BlogPost;
-use App\Models\Collaboration;
-use App\Models\EnrolledStudent;
+use Carbon\Carbon;
 use App\Models\Quiz;
 use App\Models\User;
+use App\Models\Course;
+use App\Models\BlogPost;
 use App\Models\Assignment;
-use App\Models\StudentAssignment;
 use App\Models\StudentQuiz;
+use Illuminate\Http\Request;
+use App\Models\Collaboration;
+use App\Models\EnrolledStudent;
+use App\Models\StudentAssignment;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
+use App\Http\Controllers\StudentController;
+
 
 
 class StudentController extends Controller
@@ -39,9 +41,8 @@ class StudentController extends Controller
 
     public function enrollCourse(Request $request)
     {
-
-        // $student_id = Auth::id();
-        $student_id = $request->user_id;
+        $student_id = Auth::id();
+    
         $course_id = $request->course_id;
         $course = Course::find($course_id);
         if (!$course) {
@@ -92,8 +93,7 @@ class StudentController extends Controller
 
     public function createBlog(Request $request)
     {
-        // $student_id = Auth::id();
-        $student_id = $request->user_id;
+        $student_id = Auth::id();
         $blog = new BlogPost();
         $blog->student_id = $student_id;
         $blog->title = $request->title ? $request->title : $blog->title;
@@ -105,8 +105,8 @@ class StudentController extends Controller
 
     public function getAssignmentsAndCorrected(Request $request)
     {
-        $user = Auth::user();
-        $student_id = $request->user_id;
+        $student_id = 1;
+        // $student_id = Auth::id();
         $assignments = Assignment::all();
         foreach ($assignments as $assignment) {
             $assignment->course->name;
@@ -120,8 +120,7 @@ class StudentController extends Controller
 
     public function getQuizzesAndCorrected(Request $request)
     {
-        $user = Auth::user();
-        $student_id = $request->user_id;
+        $student_id = Auth::id();
         $quizzes = Quiz::all();
         foreach ($quizzes as $quiz) {
             $quiz->course->name;
