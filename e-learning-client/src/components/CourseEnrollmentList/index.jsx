@@ -9,15 +9,23 @@ const CoursesList = (props) => {
 
     const [enrolledCourses, setEnrolledCourses] = useState([]);
     const [disabledButtons, setDisabledButtons] = useState([]);
-    
-    const enrollCourse = (courseId) => {
+
+    const enrollCourse = async (courseId) => {
             // setEnrolledCourses([...enrolledCourses, courseId]);
             setDisabledButtons([...disabledButtons, courseId]);
             try{
-                axios.post('http://127.0.0.1:8000/api/student_enrollment', {
-                    user_id: 1,
-                    course_id: courseId
-                });
+                const myHeaders = new Headers();
+                myHeaders.append("Authorization", "Bearer " + localStorage.getItem('token'));
+                const requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                redirect: 'follow'
+                };
+                const postData = {
+                    course_id: courseId,
+                };
+                const result = await axios.post('http://127.0.0.1:8000/api/student_enrollment', postData , requestOptions);
+                console.log(result)
             }
             catch(error) {
                 console.error('Error:', error);
